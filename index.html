@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>VCF y VVF 9.1: Licenciamiento y Funcionalidades</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; color: #1e293b; }
+    .slide-container {
+      width: 1280px;
+      height: 720px;
+      margin: 0 auto;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: Title Slide (Dark Ground) -->
+  <div class="slide-container" id="slide1" style="width:1280px; height:720px; margin:0; padding:64px 80px; box-sizing:border-box; overflow:hidden; background:#0b1329; display:flex; flex-direction:column; justify-content:center;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+      <div style="background:#0066cc; color:#ffffff; font-size:13px; font-weight:700; padding:6px 14px; border-radius:6px; letter-spacing:1px;">BROADCOM VMWARE 9.1</div>
+      <div style="color:#94a3b8; font-size:14px; font-weight:500;">Arquitectura Técnica y Licenciamiento</div>
+    </div>
+    <h1 contenteditable="true" style="font-size:52px; font-weight:800; color:#ffffff; margin:0 0 20px 0; line-height:1.15; max-width:950px;">
+      VCF y VVF Versión 9.1: Evolución de Licencias y Capacidades
+    </h1>
+    <p contenteditable="true" style="font-size:20px; color:#94a3b8; margin:0 0 36px 0; max-width:800px; line-height:1.4;">
+      Análisis técnico detallado de la transición a modelos basados en suscripción, gestión centralizada y nuevas funciones de infraestructura.
+    </p>
+    <div style="display:flex; gap:32px; align-items:center; border-top:1px solid #1e293b; padding-top:28px;">
+      <div>
+        <p contenteditable="true" style="font-size:13px; color:#64748b; margin:0 0 4px 0; text-transform:uppercase; letter-spacing:0.5px;">Plataforma</p>
+        <p contenteditable="true" style="font-size:16px; font-weight:600; color:#f8fafc; margin:0;">VMware Cloud Foundation & vSphere Foundation 9.1</p>
+      </div>
+      <div style="width:1px; height:32px; background:#1e293b;"></div>
+      <div>
+        <p contenteditable="true" style="font-size:13px; color:#64748b; margin:0 0 4px 0; text-transform:uppercase; letter-spacing:0.5px;">Modelo</p>
+        <p contenteditable="true" style="font-size:16px; font-weight:600; color:#f8fafc; margin:0;">VCF Operations & License Server Appliance</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Resumen Ejecutivo (Light Ground) -->
+  <div class="slide-container" id="slide2" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          Resumen Ejecutivo: El Cambio de Paradigma
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">02 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">La versión 9.1 unifica y moderniza la gestión de licencias e infraestructura privada.</p>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-key"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Fin de las Claves de 25 Caracteres</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Reemplazo total de claves tradicionales por archivos de suscripción digitales basados en capacidad por núcleos (cores) y TiB.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-server"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">VCF License Server</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Nuevo appliance dedicado y headless en la versión 9.1 que descarga la lógica de licenciamiento de VCF Operations.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Nueva Base de Seguridad</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Actualización obligatoria a VCF/VVF 9.1 para cerrar brechas ante amenazas aceleradas mediante live patching masivo.</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: El Nuevo Modelo de Licenciamiento (Light Ground) -->
+  <div class="slide-container" id="slide3" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          Arquitectura del Licenciamiento v.9.1
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">03 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Modelo basado en capacidad de pools y consola centralizada.</p>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Entitlements</span>
+        <h3 contenteditable="true" style="font-size:22px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Consumo por Capacidad</h3>
+        <ul style="list-style-type:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+          <li style="font-size:16px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Suscripción por <b>núcleos físicos (cores)</b> para el producto principal.</span></li>
+          <li style="font-size:16px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Asignación basada en <b>TiB</b> para almacenamiento vSAN.</span></li>
+          <li style="font-size:16px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Sustitución completa de licencias perpetuas (requiere migración previa).</span></li>
+        </ul>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Consola vcf.broadcom.com</span>
+        <h3 contenteditable="true" style="font-size:22px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Business Services Console</h3>
+        <ul style="list-style-type:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+          <li style="font-size:16px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Generación de archivos de licencia firmados digitalmente.</span></li>
+          <li style="font-size:16px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Gestión de activaciones y reporting de cumplimiento automatizado.</span></li>
+          <li style="font-size:16px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Soporte para modos de red conectados y desconectados (air-gapped).</span></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: VCF License Server & Operations (Light Ground) -->
+  <div class="slide-container" id="slide4" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          VCF License Server y VCF Operations
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">04 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Separación de funciones para alta disponibilidad y resiliencia en la versión 9.1.</p>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-shield"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">VCF License Server (Nuevo en 9.1)</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0 0 12px 0; line-height:1.5;">Appliance headless desplegado automáticamente junto con VCF Operations durante el upgrade.</p>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Alberga la lógica de licencias y almacenamiento local protegido, garantizando operación continua ante intermitencias.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-gauge-high"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">VCF Operations Central</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0 0 12px 0; line-height:1.5;">Componente obligatorio previo a la versión 9 que centraliza la administración y el ciclo de vida.</p>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Permite asignar licencias primarias a instancias de vCenter, licenciando automáticamente ESXi, vSAN y NSX.</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: VCF 9.1 Stack (Light Ground) -->
+  <div class="slide-container" id="slide5" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          VMware Cloud Foundation (VCF) 9.1 Stack
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">05 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">El stack completo de nube privada optimizado para IA y resiliencia empresarial.</p>
+    </div>
+    <div style="display:flex; gap:20px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Core Compute</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">vSphere & vCenter</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Virtualización robusta con NVMe memory tiering y live patching de alta velocidad.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Storage & Network</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">vSAN & NSX</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Almacenamiento hiperconvergente optimizado y microsegmentación de red Zero-Trust.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Automation & AI</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">VCF Automation & AI</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Entrega automatizada de servicios y soporte nativo para cargas de trabajo de IA privada.</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: VVF 9.1 Features (Light Ground) -->
+  <div class="slide-container" id="slide6" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          VMware vSphere Foundation (VVF) 9.1
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">06 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Optimización de servidores, eficiencia de almacenamiento y reducción de TCO.</p>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">NVMe Memory Tiering</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0 0 10px 0; line-height:1.5;">Uso de NVMe de alto rendimiento como segundo nivel de memoria.</p>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Reduce hasta 40% el TCO de servidores y mejora hasta 15% el rendimiento de bases de datos.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Quick Patching & Diagnostics</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0 0 10px 0; line-height:1.5;">Actualizaciones dirigidas que reducen ventanas de mantenimiento a menos de 5 minutos.</p>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Diagnóstico nativo con análisis automatizado que disminuye 60% el esfuerzo de resolución.</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Comparativa VCF vs VVF (Light Ground) -->
+  <div class="slide-container" id="slide7" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          Comparativa Técnica: VCF 9.1 vs VVF 9.1
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">07 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Diferencias clave en alcance de licenciamiento y automatización avanzada.</p>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:28px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Entorno Base</span>
+        <h3 contenteditable="true" style="font-size:22px; font-weight:700; color:#0f172a; margin:0. 0 16px 0;">vSphere Foundation (VVF)</h3>
+        <ul style="list-style-type:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+          <li style="font-size:15px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Enfocado en virtualización avanzada de servidores (ESXi / vCenter).</span></li>
+          <li style="font-size:15px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Incluye vSAN básico y optimizaciones de hardware (NVMe Tiering).</span></li>
+          <li style="font-size:15px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Ideal para centros de datos tradicionales que buscan modernización.</span></li>
+        </ul>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:28px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Cloud Completa</span>
+        <h3 contenteditable="true" style="font-size:22px; font-weight:700; color:#0f172a; margin:0 0 16px 0;">Cloud Foundation (VCF)</h3>
+        <ul style="list-style-type:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+          <li style="font-size:15px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Plataforma SDDC completa con integración nativa de NSX y vSAN.</span></li>
+          <li style="font-size:15px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Incluye VCF Automation y servicios privados de IA (Private AI Services).</span></li>
+          <li style="font-size:15px; color:#334155; display:flex; align-items:flex-start; gap:10px;"><i class="fa-solid fa-check" style="color:#0066cc; margin-top:4px;"></i><span>Automatización estricta del ciclo de vida mediante VCF Operations.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Gestión de Licencias Avanzada (Light Ground) -->
+  <div class="slide-container" id="slide8" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          Flexibilidad de Licenciamiento en v.9.1
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">08 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Capacidades avanzadas: Split licenses, Add-ons y Overrides.</p>
+    </div>
+    <div style="display:flex; gap:20px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Flexibilidad</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">Split Licenses</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Permite fraccionar la capacidad total de un contrato en múltiples licencias independientes para diferentes equipos o vCenters.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Expansión</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">Add-ons (vSAN & AI)</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Licencias adicionales apilables para capacidad extra de vSAN (TiB) y VMware Private AI Foundation con NVIDIA (cores).</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Control</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">Override Licenses</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Novedad en 9.1: Permite asignar licencias directamente a un host o cluster específico, tomando prioridad sobre el vCenter principal.</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Proceso de Upgrade (Light Ground) -->
+  <div class="slide-container" id="slide9" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          Proceso de Transición a Versión 9.1
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">09 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Secuencia técnica obligatoria y requisitos previos para la actualización.</p>
+    </div>
+    <div style="display:flex; gap:20px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Paso 1</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">Suscripción Comercial</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Migración obligatoria previa de licencias perpetuas a contratos de suscripción activos en Broadcom.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Paso 2</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">VCF Operations Base</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Despliegue previo obligatorio de VCF Operations 9.1 y el nuevo VCF License Server headless.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Paso 3</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">Secuencia de Upgrade</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Actualización ordenada: Management Domain, SDDC Manager/Operations, NSX, vCenter y ESXi hosts.</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Seguridad y Live Patching (Light Ground) -->
+  <div class="slide-container" id="slide10" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          Seguridad, Cumplimiento y Live Patching
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">10 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Postura de seguridad proactiva ante amenazas aceleradas en entornos híbridos.</p>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-shield-virus"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Live Patching Masivo</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0 0 10px 0; line-height:1.5;">Aplicación de parches de seguridad sin requerir reinicios completos de hipervisor.</p>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Reduce drásticamente la ventana de exposición frente a vulnerabilidades críticas de ciclo corto.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:32px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div style="width:48px; height:48px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#0066cc; font-size:22px; margin-bottom:20px;">
+          <i class="fa-solid fa-network-wired"></i>
+        </div>
+        <h3 contenteditable="true" style="font-size:20px; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Zero-Trust y Soberanía</h3>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0 0 10px 0; line-height:1.5;">Segmentación avanzada de red y recuperación soberana para cargas de trabajo de IA y datos sensibles.</p>
+        <p contenteditable="true" style="font-size:16px; color:#475569; margin:0; line-height:1.5;">Cumplimiento normativo estricto alineado con normativas europeas y globales (DORA, NIS2).</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: Componentes Deprecados (Light Ground) -->
+  <div class="slide-container" id="slide11" style="width:1280px; height:720px; margin:0; padding:56px 80px; box-sizing:border-box; overflow:hidden; background:#ffffff; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 class="slide-title" contenteditable="true" style="font-size:36px; font-weight:800; color:#0f172a; margin:0; line-height:1.2;">
+          Evolución Arquitectónica: Componentes Obsoletos
+        </h2>
+        <span style="font-size:14px; font-weight:700; color:#0066cc;">11 / 12</span>
+      </div>
+      <p contenteditable="true" style="font-size:18px; color:#64748b; margin:0;">Modificaciones en herramientas de despliegue y tecnologías de almacenamiento.</p>
+    </div>
+    <div style="display:flex; gap:20px; align-items:center; width:100%; flex-grow:1; margin:24px 0;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Despliegue</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">Cloud Builder Reemplazado</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Cloud Builder pasa a ser el nuevo <b>VCF Installer</b> con interfaz guiada y plantillas de configuración JSON nativas.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Almacenamiento</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">Depreciación de vVols</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">vSphere Virtual Volumes (vVols) se deprecian en la versión 9 y deben migrarse hacia vSAN, NFS o Fibre Channel.</p>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px; flex:1 1 0; height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <span style="font-size:12px; font-weight:700; color:#0066cc; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Gestión</span>
+        <h3 contenteditable="true" style="font-size:18px; font-weight:700; color:#0f172a; margin:0 0 8px 0;">SDDC Manager UI Lifecycle</h3>
+        <p contenteditable="true" style="font-size:15px; color:#475569; margin:0; line-height:1.4;">Las funciones de ciclo de vida migran íntegramente a VCF Operations, unificando la administración global.</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e2e8f0; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; color:#64748b;">VMware Cloud Foundation & vSphere Foundation 9.1 Technical Overview</span>
+      <span style="font-size:14px; font-weight:600; color:#0f172a;">Broadcom Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Conclusiones / Cierre (Dark Ground) -->
+  <div class="slide-container" id="slide12" style="width:1280px; height:720px; margin:0; padding:64px 80px; box-sizing:border-box; overflow:hidden; background:#0b1329; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+    <div style="background:#0066cc; color:#ffffff; font-size:13px; font-weight:700; padding:6px 16px; border-radius:6px; margin-bottom:24px; letter-spacing:1px;">CONCLUSIONES Y PRÓXIMOS PASOS</div>
+    <h2 contenteditable="true" style="font-size:48px; font-weight:800; color:#ffffff; margin:0 0 20px 0; line-height:1.2; max-width:900px;">
+      Preparando su Infraestructura para VCF y VVF 9.1
+    </h2>
+    <p contenteditable="true" style="font-size:20px; color:#94a3b8; margin:0 0 40px 0; max-width:750px; line-height:1.5;">
+      La adopción del nuevo modelo de suscripción y VCF Operations garantiza máxima seguridad, rendimiento optimizado y control centralizado.
+    </p>
+    <div style="display:flex; gap:40px; border-top:1px solid #1e293b; padding-top:32px; width:100%; justify-content:center;">
+      <div>
+        <p contenteditable="true" style="font-size:14px; color:#64748b; margin:0 0 4px 0; text-transform:uppercase;">Inventario</p>
+        <p contenteditable="true" style="font-size:16px; font-weight:600; color:#f8fafc; margin:0;">Auditar cores y contratos vigentes</p>
+      </div>
+      <div style="width:1px; height:40px; background:#1e293b;"></div>
+      <div>
+        <p contenteditable="true" style="font-size:14px; color:#64748b; margin:0 0 4px 0; text-transform:uppercase;">Operaciones</p>
+        <p contenteditable="true" style="font-size:16px; font-weight:600; color:#f8fafc; margin:0;">Desplegar VCF Operations & License Server</p>
+      </div>
+      <div style="width:1px; height:40px; background:#1e293b;"></div>
+      <div>
+        <p contenteditable="true" style="font-size:14px; color:#64748b; margin:0 0 4px 0; text-transform:uppercase;">Seguridad</p>
+        <p contenteditable="true" style="font-size:16px; font-weight:600; color:#f8fafc; margin:0;">Planificar upgrade a la baseline 9.1</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+```eof
