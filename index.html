@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VMware vSphere Foundation 9.1 & VCF 9.1 / 9.1.1 - Guía de Licenciamiento y Arquitectura</title>
+    <title>VMware vSphere Foundation 9.1 & VCF 9.1 / 9.1.1 - Deep Dive para Arquitectos</title>
     <style>
         :root {
             --primary-color: #002B49;
@@ -11,8 +11,9 @@
             --accent-color: #68D2E8;
             --dark-bg: #0B192C;
             --card-bg: #FFFFFF;
-            --text-color: #333333;
+            --text-color: #2b2b2b;
             --light-bg: #F4F6F9;
+            --code-bg: #eef2f5;
         }
         * {
             box-sizing: border-box;
@@ -37,25 +38,25 @@
             border-bottom: 4px solid var(--accent-color);
         }
         header h1 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
         }
         header span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             background-color: var(--secondary-color);
-            padding: 0.3rem 0.8rem;
+            padding: 0.3rem 0.7rem;
             border-radius: 4px;
         }
         .container {
             flex: 1;
-            max-width: 1200px;
-            margin: 1.5rem auto;
+            max-width: 1250px;
+            margin: 1.2rem auto;
             padding: 0 1rem;
             width: 100%;
         }
         .slide {
             display: none;
             background: var(--card-bg);
-            padding: 2.2rem;
+            padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             min-height: 520px;
@@ -65,39 +66,39 @@
             display: block;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
         h2 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.3rem;
         }
         h3 {
             color: var(--secondary-color);
-            margin: 0.8rem 0 0.4rem 0;
-            font-size: 1.15rem;
+            margin: 0.7rem 0 0.3rem 0;
+            font-size: 1.1rem;
         }
         p, li {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 0.5rem;
+            font-size: 0.92rem;
+            line-height: 1.45;
+            margin-bottom: 0.45rem;
         }
         ul {
-            margin-left: 1.3rem;
-            margin-bottom: 0.6rem;
+            margin-left: 1.2rem;
+            margin-bottom: 0.5rem;
         }
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            margin-top: 0.6rem;
+            margin-top: 0.5rem;
         }
         .card {
             background: var(--light-bg);
-            padding: 0.9rem;
+            padding: 0.8rem;
             border-radius: 6px;
             border-left: 4px solid var(--secondary-color);
         }
@@ -105,16 +106,24 @@
             display: inline-block;
             background: var(--accent-color);
             color: var(--primary-color);
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.5rem;
             border-radius: 4px;
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             margin-bottom: 0.3rem;
+        }
+        code {
+            background: var(--code-bg);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.88rem;
+            color: #d63384;
         }
         footer {
             background-color: var(--primary-color);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -123,10 +132,10 @@
             background-color: var(--secondary-color);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.45rem 1rem;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: background 0.2s;
         }
         .nav-buttons button:hover {
@@ -139,104 +148,95 @@
 
     <header>
         <h1>VMware vSphere Foundation 9.1 & VCF 9.1 / 9.1.1</h1>
-        <span>Presentación Técnica y de Licenciamiento</span>
+        <span>Arquitectura y Deep Dive Técnico (Expertos)</span>
     </header>
 
     <div class="container">
 
         <!-- Slide 1 -->
         <div class="slide active" id="slide-1">
-            <span class="badge">Introducción General</span>
-            <h2>Estrategia de Plataforma: VVF 9.1 y VCF 9.1</h2>
-            <p>El portafolio de infraestructura de Broadcom para centros de datos modernos se divide en dos ofertas principales basadas en núcleos de CPU (Core-based licensing):</p>
+            <span class="badge">Arquitectura Base</span>
+            <h2>Visión General del Portafolio y Licenciamiento por Núcleos</h2>
+            <p>El modelo de licenciamiento comercial de Broadcom se basa estrictamente en <code>Core-based Licensing</code> con mínimos exigidos por procesador físico para garantizar paridad arquitectónica en clústeres empresariales.</p>
             <div class="grid-2">
                 <div class="card">
-                    <h3>VMware vSphere Foundation (VVF)</h3>
-                    <p>Diseñado para cargas de trabajo estandarizadas que requieren computación robusta, almacenamiento hiperconvergente inteligente y capacidades básicas de Kubernetes y operaciones.</p>
+                    <h3>vSphere Foundation (VVF 9.1)</h3>
+                    <p>Enfocado en virtualización avanzada, almacenamiento hiperconvergente de alto rendimiento (vSAN), observabilidad operacional profunda (VCF Operations) y Kubernetes nativo mediante VKS.</p>
                 </div>
                 <div class="card">
-                    <h3>VMware Cloud Foundation (VCF)</h3>
-                    <p>Plataforma completa de Nube Privada automatizada que unifica cómputo, almacenamiento avanzado, redes definidas por software (NSX) y gestión de flotas a escala empresarial.</p>
+                    <h3>Cloud Foundation (VCF 9.1)</h3>
+                    <p>Plataforma integral SDDC que unifica la infraestructura de VVF con automatización de ciclo de vida completo (SDDC Manager), redes definidas por software (NSX) y gestión de flotas.</p>
                 </div>
             </div>
         </div>
 
         <!-- Slide 2 -->
         <div class="slide" id="slide-2">
-            <span class="badge">Evolución Tecnológica</span>
-            <h2>¿Por qué la Versión 9.1 marca un antes y un después?</h2>
-            <p>La versión 9.1 introduce optimizaciones profundas de rendimiento y seguridad diseñadas para reducir el TCO y simplificar drásticamente la gestión:</p>
+            <span class="badge">Kernel vSphere 9.1</span>
+            <h2>Optimización de Núcleos y Topología NUMA (Topology Aware Scheduling)</h2>
+            <p>La versión 9.1 rediseña el planificador del kernel ESXi para mitigar la penalización de latencia en arquitecturas multi-socket y procesadores de alta densidad de núcleos.</p>
             <ul>
-                <li><strong>Eficiencia de Hardware Extrema:</strong> Soporte para NVMe Memory Tiering y asignación consciente de topología NUMA.</li>
-                <li><strong>Resiliencia por Defecto:</strong> Cifrado avanzado con aceleración por hardware (Intel QAT) y cumplimiento FIPS 140-3 obligatorio.</li>
-                <li><strong>Agilidad Operativa:</strong> Parches rápidos para vCenter en menos de 5 minutos y observabilidad de alta fidelidad a 2 segundos.</li>
+                <li><strong>Afinidad de Caché L3:</strong> Evita la migración innecesaria de hilos de ejecución entre nodos NUMA distantes.</li>
+                <li><strong>Ganancias de Rendimiento:</strong> Hasta un <strong>68% de mejora</strong> en cargas transaccionales pesadas en sistemas de 4 sockets.</li>
+                <li><strong>Eliminación de Oversubscription:</strong> Prevención algorítmica del empaquetamiento excesivo de máquinas virtuales en dominios de memoria no homogéneos.</li>
             </ul>
         </div>
 
         <!-- Slide 3 -->
         <div class="slide" id="slide-3">
-            <span class="badge">Licenciamiento VVF 9.1</span>
-            <h2>VMware vSphere Foundation (VVF): Visión General</h2>
-            <p><strong>VVF 9.1</strong> es la solución ideal para organizaciones que buscan transformar su infraestructura tradicional basada en vSphere en un entorno hiperconvergente avanzado y listo para desarrolladores.</p>
+            <span class="badge">Subsistema de Memoria</span>
+            <h2>Enhanced NVMe Memory Tiering (Tier 0 & Tier 1)</h2>
+            <p>Una solución arquitectónica clave para reducir el TCO en bases de datos in-memory y cargas con alta demanda de RAM.</p>
             <div class="grid-2">
                 <div class="card">
-                    <h3>Modelo de Licenciamiento</h3>
-                    <p>Licenciado por número de núcleos físicos de CPU por host, con un mínimo requerido por procesador para asegurar gobernanza justa.</p>
+                    <h3>Arquitectura de Niveles</h3>
+                    <p><strong>Tier 0:</strong> Memoria DRAM local de ultra baja latencia.<br><strong>Tier 1:</strong> Dispositivos NVMe de alta velocidad conectados mediante PCIe directos gestionados por el kernel.</p>
                 </div>
                 <div class="card">
-                    <h3>Público Objetivo</h3>
-                    <p>Empresas medianas y grandes que operan centros de datos dedicados o entornos distribuidos (*edge*) que no requieren automatización completa de nube híbrida multi-sitio.</p>
+                    <h3>Impacto Financiero y Técnico</h3>
+                    <p>Descarga hasta el 25% de páginas frías o templadas hacia NVMe, logrando hasta un <strong>40% de reducción en el TCO del servidor</strong> y 15% de mejora en DB performance frente a v9.0.</p>
                 </div>
             </div>
         </div>
 
         <!-- Slide 4 -->
         <div class="slide" id="slide-4">
-            <span class="badge">Componentes VVF</span>
-            <h2>Elemento 1 de VVF: vSphere Enterprise Plus / Advanced</h2>
-            <p><strong>Qué contiene:</strong> El hipervisor líder de la industria (ESXi) junto con el motor central de gestión y alta disponibilidad (vCenter Server).</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Permite la virtualización de servidores físicos, gestión centralizada de clústeres, balanceo dinámico de cargas (DRS) y alta disponibilidad ante fallos de hardware (HA).</p>
-                </div>
-                <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Garantiza el 99.99% de disponibilidad operativa y maximiza la consolidación de servidores con mínima sobrecarga de hipervisor.</p>
-                </div>
-            </div>
+            <span class="badge">Criptografía Hardware</span>
+            <h2>Aceleración por Hardware con Intel QAT (QuickAssist Technology)</h2>
+            <p>El cifrado en tránsito consume ciclos de CPU significativos; la versión 9.1 delega esta sobrecarga directamente al silicio especializado.</p>
+            <ul>
+                <li><strong>Encrypted vMotion Offload:</strong> Descarga hasta el <strong>70% de la carga de CPU</strong> en el host de origen durante migraciones en vivo cifradas.</li>
+                <li><strong>Optimización de Destino:</strong> Reduce un 22% la sobrecarga en el host receptor de la máquina virtual.</li>
+                <li><strong>Integridad Criptográfica:</strong> Mantiene los estándares de cifrado extremo sin penalizar los SLAs de rendimiento de red y cómputo.</li>
+            </ul>
         </div>
 
         <!-- Slide 5 -->
         <div class="slide" id="slide-5">
-            <span class="badge">Componentes VVF</span>
-            <h2>Elemento 2 de VVF: vSAN (Almacenamiento Hiperconvergente)</h2>
-            <p><strong>Qué contiene:</strong> Capa de almacenamiento definida por software integrada nativamente en el kernel de ESXi (incluye capacidades de arquitectura OSA y ESA).</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Agrega discos locales (NVMe/SSD) de los servidores en un único almacén de datos distribuido, resiliente y de alto rendimiento, eliminando la necesidad de SAN/NAS externas costosas.</p>
-                </div>
-                <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Reduce drásticamente los costos de adquisición de hardware y simplifica la expansión de almacenamiento mediante modelos hiperconvergentes escalables.</p>
-                </div>
-            </div>
+            <span class="badge">Licenciamiento VVF 9.1</span>
+            <h2>VMware vSphere Foundation (VVF): Arquitectura y Componentes</h2>
+            <p>VVF 9.1 agrupa elementos esenciales para transformar centros de datos tradicionales en nubes privadas hiperconvergentes preparadas para contenedores.</p>
+            <ul>
+                <li><strong>vSphere Enterprise Plus / Advanced:</strong> Núcleo de virtualización y alta disponibilidad.</li>
+                <li><strong>vSAN (Express Storage Architecture / OSA):</strong> Almacenamiento definido por software integrado.</li>
+                <li><strong>VCF Operations:</strong> Analítica predictiva, gestión de capacidad y observabilidad.</li>
+                <li><strong>vSphere Kubernetes Service (VKS):</strong> Orquestación nativa de contenedores basada en Supervisor.</li>
+            </ul>
         </div>
 
         <!-- Slide 6 -->
         <div class="slide" id="slide-6">
             <span class="badge">Componentes VVF</span>
-            <h2>Elemento 3 de VVF: VCF Operations (Gestión y Observabilidad)</h2>
-            <p><strong>Qué contiene:</strong> Herramientas avanzadas de supervisión de rendimiento, análisis de capacidad y diagnóstico proactivo.</p>
+            <h2>Deep Dive: vSphere Enterprise Plus y Gestión Centralizada</h2>
+            <p>El pilar fundamental de cómputo en VVF 9.1 proporciona los mecanismos de abstracción y control para cualquier carga de trabajo empresarial.</p>
             <div class="grid-2">
                 <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Monitorea la salud general del centro de datos, predice cuellos de botella de capacidad antes de que afecten el negocio y correlaciona métricas en tiempo real a 2 segundos.</p>
+                    <h3>Propósito Técnico</h3>
+                    <p>Proveer abstracción de hardware x86_64, gestión centralizada mediante vCenter Server y balanceo automatizado de recursos (DRS/HA).</p>
                 </div>
                 <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Reduce hasta un 60% el tiempo dedicado a la resolución de problemas (*troubleshooting*) y optimiza el uso de recursos existentes.</p>
+                    <h3>Beneficio para Arquitectos</h3>
+                    <p>Garantiza SLA del 99.99% mediante tolerancia a fallos a nivel de hipervisor y recuperación automatizada ante caídas de nodos físicos.</p>
                 </div>
             </div>
         </div>
@@ -244,78 +244,68 @@
         <!-- Slide 7 -->
         <div class="slide" id="slide-7">
             <span class="badge">Componentes VVF</span>
-            <h2>Elemento 4 de VVF: vSphere Kubernetes Service (VKS)</h2>
-            <p><strong>Qué contiene:</strong> El plano de control de Kubernetes integrado directamente en el hipervisor (Supervisor).</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Permite ejecutar contenedores de forma nativa junto a las máquinas virtuales tradicionales, facilitando la adopción de arquitecturas basadas en microservicios.</p>
-                </div>
-                <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Acelera la innovación para equipos de desarrollo sin necesidad de construir una infraestructura de contenedores totalmente separada.</p>
-                </div>
-            </div>
+            <h2>Deep Dive: vSAN 9.1 y Arquitectura ESA / OSA Coexistence</h2>
+            <p>vSAN 9.1 introduce mejoras críticas en la eficiencia del almacenamiento hiperconvergente de alta velocidad.</p>
+            <ul>
+                <li><strong>ESA Sharing:</strong> Montaje concurrente y gestión unificada de almacenes de datos OSA (Original Storage Architecture) y ESA (Express Storage Architecture).</li>
+                <li><strong>Deduplicación y Compresión de Nueva Generación:</strong> Algoritmos optimizados que reducen la huella de almacenamiento hasta un 39% frente a cabinas externas.</li>
+                <li><strong>vSAN Disaster Recovery:</strong> Instantáneas profundas (*deep snapshots*) y replicación agnóstica al hardware para reducir el TCO de recuperación.</li>
+            </ul>
         </div>
 
         <!-- Slide 8 -->
         <div class="slide" id="slide-8">
-            <span class="badge">Beneficios VVF</span>
-            <h2>Beneficios Financieros y Operativos de VVF 9.1</h2>
-            <ul>
-                <li><strong>Reducción del TCO:</strong> Al unificar cómputo, almacenamiento hiperconvergente y gestión en una sola SKU basada en núcleos, se eliminan sobrecostos por licencias fragmentadas de terceros.</li>
-                <li><strong>Simplicidad de Despliegue:</strong> Facilita la adopción inicial de tecnologías empresariales avanzadas en organizaciones de tamaño medio.</li>
-                <li><strong>Rendimiento Optimizado:</strong> Aprovecha las capacidades de la versión 9.1 como NVMe Memory Tiering para maximizar la inversión en hardware.</li>
-            </ul>
+            <span class="badge">Componentes VVF</span>
+            <h2>Deep Dive: VCF Operations y Observabilidad a 2 Segundos</h2>
+            <p>La visibilidad operativa en la versión 9.1 abandona los sondeos tradicionales de intervalos largos para ofrecer telemetría en tiempo real.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Muestreo de Alta Fidelidad</h3>
+                    <p>Captura métricas críticas cada 2 segundos, eliminando el suavizado de datos que ocultaba picos transitorios y micro-congestiones.</p>
+                </div>
+                <div class="card">
+                    <h3>Proactive Diagnostic Insights</h3>
+                    <p>Correlaciona latencias de vSAN y eventos de kernel automáticamente, reduciendo el tiempo de resolución de anomalías (*troubleshooting*) en un 60%.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Slide 9 -->
         <div class="slide" id="slide-9">
-            <span class="badge">Licenciamiento VCF 9.1</span>
-            <h2>VMware Cloud Foundation (VCF): Visión General</h2>
-            <p><strong>VCF 9.1</strong> es la plataforma definitiva de Nube Privada automatizada de nivel empresarial. Agrupa todo lo que incluye VVF y le añade capacidades masivas de automatización, redes definidas por software y gestión de múltiples entornos.</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Modelo de Licenciamiento</h3>
-                    <p>Licenciado por núcleo de CPU físico con derechos de uso para toda la suite integrada de nube privada (Cómputo, Redes, Almacenamiento avanzado y Automatización).</p>
-                </div>
-                <div class="card">
-                    <h3>Público Objetivo</h3>
-                    <p>Grandes empresas, proveedores de servicios y organizaciones con estrictos requisitos de automatización, seguridad de red avanzada y operaciones a gran escala.</p>
-                </div>
-            </div>
+            <span class="badge">Componentes VVF</span>
+            <h2>Deep Dive: vSphere Kubernetes Service (VKS) y Supervisor</h2>
+            <p>VKS en VVF 9.1 desacopla el ciclo de vida de Kubernetes del software de gestión tradicional.</p>
+            <ul>
+                <li><strong>Actualizaciones Independientes del Supervisor:</strong> El plano de control de contenedores se actualiza de forma asíncrona respecto a vCenter.</li>
+                <li><strong>Management & Workload Zones:</strong> Aislamiento estricto entre los componentes de infraestructura y las cargas de desarrollo de los tenants.</li>
+                <li><strong>Foundation Load Balancer:</strong> Balanceo de carga L4 integrado nativamente fuera de caja.</li>
+            </ul>
         </div>
 
         <!-- Slide 10 -->
         <div class="slide" id="slide-10">
-            <span class="badge">Componentes VCF</span>
-            <h2>Elemento 1 de VCF: SDDC Manager y Fleet Management</h2>
-            <p><strong>Qué contiene:</strong> El motor central de orquestación y la nueva consola de gestión de flotas a escala.</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Automatiza el ciclo de vida completo de la infraestructura (instalación, configuración, parches y actualizaciones) y centraliza múltiples instancias de VCF.</p>
-                </div>
-                <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Transforma la gestión de centros de datos complejos en una experiencia coherente de "cloud pública" dentro del datacenter privado.</p>
-                </div>
-            </div>
+            <span class="badge">Propuesta VVF</span>
+            <h2>Beneficios Estratégicos y Financieros de VVF 9.1</h2>
+            <ul>
+                <li><strong>Consolidación Extrema:</strong> Elimina licencias de software de respaldo y gestión dispersas gracias a su enfoque todo en uno basado en núcleos.</li>
+                <li><strong>Aprovechamiento de Hardware:</strong> Permite utilizar NVMe económicos como niveles de memoria gracias a NVMe Tiering, evitando compras tempranas de DRAM costosa.</li>
+                <li><strong>Madurez Operativa:</strong> Proporciona una plataforma sólida para virtualización tradicional y contenedores sin la complejidad de una nube híbrida multi-sitio.</li>
+            </ul>
         </div>
 
         <!-- Slide 11 -->
         <div class="slide" id="slide-11">
-            <span class="badge">Componentes VCF</span>
-            <h2>Elemento 2 de VCF: NSX (Redes y Seguridad Definidas por Software)</h2>
-            <p><strong>Qué contiene:</strong> Virtualización de red avanzada, balanceo de carga L4 y pasarelas de alta disponibilidad.</p>
+            <span class="badge">Licenciamiento VCF 9.1</span>
+            <h2>VMware Cloud Foundation (VCF): Arquitectura de Nube Privada</h2>
+            <p>VCF 9.1 representa la evolución total hacia un modelo de operación estilo nube pública (*Public Cloud Experience*) on-premises.</p>
             <div class="grid-2">
                 <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Proporciona microsegmentación automatizada de red, asegurando que el tráfico entre máquinas virtuales esté blindado contra movimientos laterales de ciberataques.</p>
+                    <h3>Modelo de Licenciamiento por Núcleo</h3>
+                    <p>Otorga derechos de uso sobre toda la pila integrada de SDDC (Cómputo, Almacenamiento avanzado, Redes NSX y SDDC Manager).</p>
                 </div>
                 <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Elimina la dependencia de redes físicas rígidas y eleva la postura de seguridad de la red al nivel de aplicación individual.</p>
+                    <h3>Enfoque Arquitectónico</h3>
+                    <p>Diseñado para automatizar el ciclo de vida completo de la infraestructura y proveer seguridad intrínseca de extremo a extremo.</p>
                 </div>
             </div>
         </div>
@@ -323,33 +313,28 @@
         <!-- Slide 12 -->
         <div class="slide" id="slide-12">
             <span class="badge">Componentes VCF</span>
-            <h2>Elemento 3 de VCF: vSAN Enterprise / Capacidades Ampliadas</h2>
-            <p><strong>Qué contiene:</strong> Almacenamiento hiperconvergente vSAN en su nivel más avanzado con optimización de espacio y replicación nativa.</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Soporta clústeres estirados (Stretched Clusters), deduplicación y compresión avanzada de próxima generación, y recuperación ante desastres agnóstica al hardware.</p>
-                </div>
-                <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Ofrece resiliencia de datos de grado militar y alta disponibilidad geográfica con un rendimiento superior a cabinas externas.</p>
-                </div>
-            </div>
+            <h2>Deep Dive: SDDC Manager y Fleet Management</h2>
+            <p>El cerebro de automatización y gestión centralizada en VCF 9.1.</p>
+            <ul>
+                <li><strong>Fleet Management:</strong> Consola unificada para administrar múltiples instancias de VCF y dominios de cargas distribuidos globalmente.</li>
+                <li><strong>Ciclo de Vida Automatizado:</strong> Orquestación inteligente de actualizaciones de ESXi, vCenter, NSX y vSAN mediante paquetes validados (*Bill of Materials*).</li>
+                <li><strong>Eliminación de Configuration Drift:</strong> Asegura que todos los nodos cumplan estrictamente con los perfiles de estado deseado (*desired-state*).</li>
+            </ul>
         </div>
 
         <!-- Slide 13 -->
         <div class="slide" id="slide-13">
             <span class="badge">Componentes VCF</span>
-            <h2>Elemento 4 de VCF: HCX (Hybrid Cloud Extension)</h2>
-            <p><strong>Qué contiene:</strong> Herramientas de movilidad de cargas de trabajo a nivel de red híbrida.</p>
+            <h2>Deep Dive: NSX 9.1 (Redes y Seguridad Definidas por Software)</h2>
+            <p>NSX 9.1 es el componente de red que habilita la arquitectura de seguridad Zero Trust dentro de VCF.</p>
             <div class="grid-2">
                 <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Facilita la migración masiva de máquinas virtuales desde datacenters heredados hacia VCF o nubes públicas asociadas sin interrupción de servicios ni rediseño de IPs.</p>
+                    <h3>Microsegmentación Automatizada</h3>
+                    <p>Políticas de cortafuegos distribuidas basadas en contexto de aplicación que bloquean el movimiento lateral de malware entre VMs.</p>
                 </div>
                 <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Elimina la fricción y el tiempo de inactividad durante proyectos de consolidación de centros de datos o migraciones a la nube.</p>
+                    <h3>Gateways y Balanceo de Carga</h3>
+                    <p>Pasarelas de red de alta disponibilidad y servicios L4-L7 integrados de alto rendimiento sin dependencia de appliances físicos externos.</p>
                 </div>
             </div>
         </div>
@@ -357,142 +342,151 @@
         <!-- Slide 14 -->
         <div class="slide" id="slide-14">
             <span class="badge">Componentes VCF</span>
-            <h2>Elemento 5 de VCF: Automatización y Interfaces para Desarrolladores</h2>
-            <p><strong>Qué contiene:</strong> APIs unificadas (OpenAPI 3.0), integración con herramientas DevOps y portales de autoservicio.</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>¿Para qué sirve?</h3>
-                    <p>Permite a los ingenieros de plataforma y desarrolladores consumir infraestructura como código (IaC) mediante flujos automatizados.</p>
-                </div>
-                <div class="card">
-                    <h3>Beneficio Clave</h3>
-                    <p>Acelera drásticamente el tiempo de entrega de aplicaciones al negocio (*time-to-market*).</p>
-                </div>
-            </div>
+            <h2>Deep Dive: vSAN Enterprise & Stretched Clusters Maint. Mode</h2>
+            <p>VCF incluye las capacidades de almacenamiento más avanzadas de la familia vSAN.</p>
+            <ul>
+                <li><strong>Site-Wide Maintenance Mode:</strong> Optimiza las ventanas de mantenimiento en clústeres estirados geográfica (*Stretched Clusters*), resincronizando únicamente datos diferenciales.</li>
+                <li><strong>Replicación Nativa:</strong> Capacidad de recuperación ante desastres agnóstica al hardware de cabinas.</li>
+                <li><strong>Eficiencia de Espacio:</strong> Compresión avanzada de bloques optimizada para latencias ultra bajas en NVMe.</li>
+            </ul>
         </div>
 
         <!-- Slide 15 -->
         <div class="slide" id="slide-15">
-            <span class="badge">Beneficios VCF</span>
-            <h2>Beneficios Estratégicos de VMware Cloud Foundation 9.1</h2>
-            <ul>
-                <li><strong>Nube Privada Autónoma:</strong> Automatización de extremo a extremo que reduce los errores humanos operativos en más del 80%.</li>
-                <li><strong>Seguridad Cero Confianza (Zero Trust):</strong> Microsegmentación nativa con NSX y cifrado integral en tránsito y reposo.</li>
-                <li><strong>Economía de Escala:</strong> Capacidad de gestionar flotas completas de centros de datos como una sola entidad cohesiva.</li>
-            </ul>
+            <span class="badge">Componentes VCF</span>
+            <h2>Deep Dive: HCX (Hybrid Cloud Extension) y Movilidad Masiva</h2>
+            <p>Herramienta clave para la hibridación de centros de datos y migraciones a gran escala.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Migraciones sin Rediseño</h3>
+                    <p>Permite mover máquinas virtuales entre datacenters heredados y VCF manteniendo las direcciones IP de origen y sin cortes de red (Layer 2 Extension).</p>
+                </div>
+                <div class="card">
+                    <h3>Optimización WAN</h3>
+                    <p>Compresión de tráfico y deduplicación durante la migración masiva sobre enlaces de red de área amplia.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Slide 16 -->
         <div class="slide" id="slide-16">
-            <span class="badge">Comparativa Licenciamiento</span>
-            <h2>Cuadro Comparativo: VVF 9.1 vs VCF 9.1</h2>
+            <span class="badge">Propuesta VCF</span>
+            <h2>Beneficios Estratégicos de VMware Cloud Foundation 9.1</h2>
             <ul>
-                <li><strong>Cómputo (vSphere):</strong> Incluido en ambas (Versión avanzada/Enterprise Plus).</li>
-                <li><strong>Almacenamiento (vSAN):</strong> Incluido en ambas (vSAN básico/estándar en VVF vs capacidades Enterprise completas en VCF).</li>
-                <li><strong>Redes Avanzadas (NSX):</strong> <em>Solo incluido en VCF 9.1</em> (VVF requiere licenciamiento o complementos adicionales).</li>
-                <li><strong>Automatización SDDC Manager / Fleet:</strong> <em>Exclusivo de VCF 9.1</em> para la gestión integral de nubes privadas.</li>
-                <li><strong>Movilidad Híbrida (HCX):</strong> <em>Exclusivo de VCF 9.1</em> para migraciones a escala.</li>
+                <li><strong>Autonomía Operativa:</strong> Reducción del error humano en más de un 80% mediante la estricta automatización del SDDC Manager.</li>
+                <li><strong>Seguridad por Diseño:</strong> Integración nativa de NSX para microsegmentación y cifrado robusto en cada capa de la pila.</li>
+                <li><strong>Agilidad de Negocio:</strong> Capacidades de aprovisionamiento elástico para desarrolladores y gestión centralizada de flotas a escala global.</li>
             </ul>
         </div>
 
         <!-- Slide 17 -->
         <div class="slide" id="slide-17">
-            <span class="badge">Rendimiento Versión 9.1</span>
-            <h2>Innovaciones de Rendimiento en vSphere 9.1</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Enhanced NVMe Memory Tiering</h3>
-                    <p>Utiliza NVMe locales como nivel secundario de memoria junto a DRAM, reduciendo hasta un 40% el TCO en servidores densos en memoria.</p>
-                </div>
-                <div class="card">
-                    <h3>Topology Aware Scheduling</h3>
-                    <p>Optimización NUMA avanzada que logra hasta un 68% de ganancia de rendimiento en sistemas multi-socket complejos.</p>
-                </div>
-            </div>
+            <span class="badge">Seguridad y Cumplimiento</span>
+            <h2>Seguridad por Defecto: TLS 1.3, FIPS 140-3 y Computación Confidencial</h2>
+            <p>VCF 9.1 y VVF 9.1 implementan un modelo de blindaje criptográfico de nivel gubernamental y financiero fuera de caja.</p>
+            <ul>
+                <li><strong>TLS 1.3 Obligatorio:</strong> Habilitado por defecto en todos los puertos de gestión y comunicación entre demonios del kernel.</li>
+                <li><strong>Validación FIPS 140-3:</strong> Módulos criptográficos certificados integrados en el plano de control.</li>
+                <li><strong>Computación Confidencial:</strong> Soporte arquitectónico inicial para AMD SEV-SNP e Intel TDX protegiendo la memoria en uso frente a ataques al hipervisor.</li>
+            </ul>
         </div>
 
         <!-- Slide 18 -->
         <div class="slide" id="slide-18">
-            <span class="badge">Seguridad Versión 9.1</span>
-            <h2>Resiliencia, Seguridad por Defecto y Live Patching</h2>
-            <ul>
-                <li><strong>Live Patching para TPM:</strong> Aplica parches críticos sin requerir evacuación de hosts ni downtime en hasta el 80% de las actualizaciones de seguridad.</li>
-                <li><strong>Criptografía Moderna:</strong> Activación nativa obligatoria de protocolos <strong>TLS 1.3</strong> y cumplimiento riguroso de módulos <strong>FIPS 140-3</strong>.</li>
-                <li><strong>Aceleración por Hardware:</strong> Uso de Intel QAT para descifrar y acelerar Encrypted vMotion sin sobrecargar la CPU principal.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 19 -->
-        <div class="slide" id="slide-19">
-            <span class="badge">Almacenamiento Versión 9.1</span>
-            <h2>Almacenamiento y Recuperación Avanzada en vSAN 9.1</h2>
+            <span class="badge">Resiliencia Operativa</span>
+            <h2>Zero-Downtime Operations: Live Patching para Hosts con TPM</h2>
+            <p>La gestión de parches de seguridad dejaba tradicionalmente ventanas de mantenimiento complejas; la versión 9.1 transforma este paradigma.</p>
             <div class="grid-2">
                 <div class="card">
-                    <h3>ESA Sharing</h3>
-                    <p>Permite el montaje concurrente de almacenes OSA y ESA, eliminando silos y maximizando el retorno de inversión en hardware.</p>
+                    <h3>Parches en Vivo con TPM</h3>
+                    <p>Permite aplicar actualizaciones críticas del kernel sin requerir la evacuación de máquinas virtuales ni reinicios disruptivos en hosts habilitados con Trusted Platform Module.</p>
                 </div>
                 <div class="card">
-                    <h3>vSAN Disaster Recovery</h3>
-                    <p>Solución de replicación nativa basada en instantáneas profundas (*deep snapshots*) que reduce el TCO de recuperación en un 27%.</p>
+                    <h3>Impacto Operativo</h3>
+                    <p>Elimina el tiempo de inactividad para hasta el <strong>80% de las actualizaciones de seguridad</strong> del hipervisor.</p>
                 </div>
             </div>
         </div>
 
+        <!-- Slide 19 -->
+        <div class="slide" id="slide-19">
+            <span class="badge">Automatización de Estado</span>
+            <h2>vSphere Configuration Profiles y Elastic Provisioning</h2>
+            <ul>
+                <li><strong>Configuration Drift Prevention:</strong> Estandariza la configuración de vSAN, NSX y parámetros de clúster aplicando perfiles de estado deseado (*desired-state*).</li>
+                <li><strong>vSphere Elastic Provisioning:</strong> Descubrimiento automático de servidores físicos y alta remota para entornos Edge, eliminando desplazamientos técnicos presenciales (*truck rolls*).</li>
+                <li><strong>Unified SDK y Open API 3.0:</strong> Estandarización completa de endpoints de automatización para ingenieros de plataforma.</li>
+            </ul>
+        </div>
+
         <!-- Slide 20 -->
         <div class="slide" id="slide-20">
-            <span class="badge">Novedades Versión 9.1</span>
-            <h2>¿Qué hay de nuevo en la Versión 9.1? (Resumen Ejecutivo)</h2>
+            <span class="badge">Matriz de Decisión</span>
+            <h2>Matriz Comparativa: VVF 9.1 vs VCF 9.1 para Arquitectos</h2>
             <ul>
-                <li><strong>Fleet Management:</strong> Centralización de múltiples instancias de VCF y dominios de carga de trabajo.</li>
-                <li><strong>Observabilidad a 2 Segundos:</strong> Muestreo de alta fidelidad que elimina la latencia de diagnóstico tradicional.</li>
-                <li><strong>Proactive Diagnostic Insights:</strong> Reducción del 60% en el esfuerzo de resolución de problemas mediante correlación automática de causas raíz.</li>
-                <li><strong>vSphere Elastic Provisioning:</strong> Descubrimiento y alta automática de hosts remotos en entornos Edge.</li>
+                <li><strong>Cómputo (vSphere):</strong> Presente en ambas ediciones con optimizaciones de kernel idénticas.</li>
+                <li><strong>Almacenamiento (vSAN):</strong> Versión estándar/avanzada en VVF vs Capacidades Enterprise completas con ESA Sharing en VCF.</li>
+                <li><strong>Redes y Seguridad (NSX):</strong> <em>Exclusivo de VCF 9.1</em> (requiere licenciamiento independiente en VVF).</li>
+                <li><strong>Automatización SDDC / Fleet:</strong> <em>Exclusivo de VCF 9.1</em> para gestión unificada del ciclo de vida.</li>
+                <li><strong>Movilidad Híbrida (HCX):</strong> <em>Exclusivo de VCF 9.1</em>.</li>
             </ul>
         </div>
 
         <!-- Slide 21 -->
         <div class="slide" id="slide-21">
             <span class="badge">Novedades Parche 9.1.1.0</span>
-            <h2>Actualización VCF 9.1.1.0: Mejoras en Upgrades y Workflows</h2>
-            <p>El parche <strong>9.1.1.0</strong> introduce refinamientos críticos orientados a garantizar despliegues y transiciones sin fricción:</p>
+            <h2>What's New in VCF 9.1.1.0: Mejoras en Workflows de Actualización</h2>
+            <p>El parche de mantenimiento <strong>9.1.1.0</strong> refina los mecanismos de control de SDDC Manager para transiciones de versión sin fricción.</p>
             <ul>
-                <li><strong>Asistentes de Actualización Mejorados:</strong> Optimización en SDDC Manager con verificaciones previas (*pre-checks*) mucho más estrictas para validar firmware, drivers y topologías de red antes de ejecutar mantenimiento.</li>
-                <li><strong>Reducción de Riesgos:</strong> Prevención automática de fallos de compatibilidad cruzada entre componentes de red y almacenamiento durante la actualización.</li>
+                <li><strong>Motor de Pre-checks Avanzado:</strong> Verificaciones previas mucho más estrictas que identifican incompatibilidades de firmware, drivers y esquemas de red antes de iniciar la ventana de mantenimiento.</li>
+                <li><strong>Mitigación de Fallos:</strong> Prevención proactiva de interrupciones imprevistas durante la actualización secuencial de clústeres complejos.</li>
             </ul>
         </div>
 
         <!-- Slide 22 -->
         <div class="slide" id="slide-22">
             <span class="badge">Novedades Parche 9.1.1.0</span>
-            <h2>Actualización VCF 9.1.1.0: Seguridad y Corrección de Bugs</h2>
+            <h2>What's New in VCF 9.1.1.0: Blindaje Criptográfico y Parches Acumulativos</h2>
             <div class="grid-2">
                 <div class="card">
-                    <h3>Seguridad Acumulativa</h3>
-                    <p>Integración de los parches de kernel más recientes y refuerzo estricto del cumplimiento normativo en cifrado TLS y FIPS.</p>
+                    <h3>Seguridad Acumulativa del Kernel</h3>
+                    <p>Integración de parches del sistema operativo base y endurecimiento estricto de las directivas de cifrado predeterminadas.</p>
                 </div>
                 <div class="card">
-                    <h3>Bug Fixes Críticos</h3>
-                    <p>Resolución de incidencias en sincronización de clústeres estirados de vSAN ESA durante failover, estabilización de rutas NSX y corrección de memory leaks en telemetría.</p>
+                    <h3>Consistencia Normativa</h3>
+                    <p>Alineación directa con los requerimientos actualizados de cumplimiento FIPS 140-3 en todos los subcomponentes del plano de gestión.</p>
                 </div>
             </div>
         </div>
 
         <!-- Slide 23 -->
         <div class="slide" id="slide-23">
-            <span class="badge">Conclusión</span>
-            <h2>Conclusiones y Próximos Pasos para la Adopción</h2>
-            <p>La combinación de <strong>VVF 9.1</strong> y <strong>VCF 9.1 (con el parche 9.1.1.0)</strong> ofrece una madurez tecnológica sin precedentes para las organizaciones:</p>
+            <span class="badge">Novedades Parche 9.1.1.0</span>
+            <h2>What's New in VCF 9.1.1.0: Corrección de Errores Críticos (Bug Fixes)</h2>
+            <p>El release 9.1.1.0 corrige incidencias reportadas en entornos de misión crítica:</p>
             <ul>
-                <li><strong>Elija VVF 9.1</strong> si su prioridad es consolidar infraestructura de computación y almacenamiento hiperconvergente de alto rendimiento con operaciones optimizadas.</li>
-                <li><strong>Elija VCF 9.1</strong> si busca una nube privada completamente automatizada, con seguridad de red cero confianza mediante NSX y gestión centralizada de flotas.</li>
-                <li><strong>Asegúrese de aplicar VCF 9.1.1.0</strong> para aprovechar al máximo la estabilidad operativa y los parches de seguridad acumulativos.</li>
+                <li><strong>Sincronización en Stretched Clusters:</strong> Resolución de anomalías en metadatos de vSAN ESA durante eventos de conmutación por error (*failover*) geográfico.</li>
+                <li><strong>Estabilidad de NSX Routing:</strong> Correcciones en la propagación de rutas bajo topologías multiclúster altamente malladas.</li>
+                <li><strong>Gestión de Memoria:</strong> Solución a fugas de memoria (*memory leaks*) detectadas en servicios de telemetría bajo cargas de trabajo sostenidas extremas.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 24 -->
+        <div class="slide" id="slide-24">
+            <span class="badge">Conclusión Técnica</span>
+            <h2>Blueprint de Arquitectura y Recomendaciones de Adopción</h2>
+            <p>Para arquitectos e ingenieros evaluando el despliegue de las versiones 9.1:</p>
+            <ul>
+                <li><strong>Adopte VVF 9.1</strong> cuando el objetivo principal sea la consolidación de cómputo y almacenamiento hiperconvergente de alto rendimiento con analítica avanzada.</li>
+                <li><strong>Adopte VCF 9.1</strong> cuando la estrategia corporativa exija automatización de nube privada, microsegmentación de red estricta con NSX y gestión de flotas.</li>
+                <li><strong>Despliegue VCF 9.1.1.0</strong> obligatoriamente para beneficiarse de las correcciones de estabilidad en clústeres estirados y el motor mejorado de pre-checks.</li>
             </ul>
         </div>
 
     </div>
 
     <footer>
-        <span id="slide-counter">Diapositiva 1 de 23</span>
+        <span id="slide-counter">Diapositiva 1 de 24</span>
         <div class="nav-buttons">
             <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Siguiente</button>
