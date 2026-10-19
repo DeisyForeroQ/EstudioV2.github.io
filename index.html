@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VMware vSphere Foundation 9.1 & VCF 9.1 / 9.1.1 - Arquitectura Experta Deep Dive</title>
+    <title>VMware vSphere Foundation 9.1 & VCF 9.1 / 9.1.1 - Guía de Preventa</title>
     <style>
         :root {
             --primary-color: #002B49;
@@ -102,6 +102,14 @@
             border-radius: 6px;
             border-left: 4px solid var(--secondary-color);
         }
+        .example-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid #0073B7;
+            padding: 0.7rem;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
         .badge {
             display: inline-block;
             background: var(--accent-color);
@@ -111,14 +119,6 @@
             font-weight: bold;
             font-size: 0.75rem;
             margin-bottom: 0.3rem;
-        }
-        code {
-            background: var(--code-bg);
-            padding: 0.1rem 0.3rem;
-            border-radius: 3px;
-            font-family: monospace;
-            font-size: 0.88rem;
-            color: #d63384;
         }
         footer {
             background-color: var(--primary-color);
@@ -148,379 +148,77 @@
 
     <header>
         <h1>VMware vSphere Foundation 9.1 & VCF 9.1 / 9.1.1</h1>
-        <span>Arquitectura y Deep Dive Técnico (Nivel Expertos)</span>
+        <span>Presentación Comercial y Técnica para Preventa</span>
     </header>
 
     <div class="container">
 
         <!-- Slide 1 -->
         <div class="slide active" id="slide-1">
-            <span class="badge">Arquitectura Base & Licenciamiento</span>
-            <h2>Modelos de Licenciamiento por Núcleo (Core-Based Licensing) en v9.1</h2>
-            <p>El portafolio de infraestructura moderna de Broadcom estandariza su modelo comercial bajo estrictas métricas de núcleos físicos:</p>
+            <span class="badge">Estrategia Comercial</span>
+            <h2>Estrategia de Preventa: Posicionamiento de VVF 9.1 y VCF 9.1</h2>
+            <p>El portafolio moderno de Broadcom se basa en licenciamiento por núcleos físicos (Core-Based Licensing), adaptándose a dos perfiles de cliente clave:</p>
             <div class="grid-2">
                 <div class="card">
                     <h3>vSphere Foundation (VVF 9.1)</h3>
-                    <p>Licenciamiento basado en núcleos físicos por host con mínimos requeridos. Habilita virtualización avanzada, almacenamiento hiperconvergente vSAN, observabilidad profunda con VCF Operations y Kubernetes nativo (VKS).</p>
+                    <p>Enfocado en clientes que buscan modernizar su virtualización tradicional, adoptar almacenamiento hiperconvergente de alto rendimiento y contenedores locales con analítica proactiva.</p>
                 </div>
                 <div class="card">
                     <h3>Cloud Foundation (VCF 9.1)</h3>
-                    <p>Paquete unificado de SDDC que otorga derechos de uso sobre toda la pila de nube privada automatizada. Incluye cómputo, almacenamiento empresarial, redes definidas por software NSX, automatización de ciclo de vida (SDDC Manager) y gestión de flotas.</p>
+                    <p>Enfocado en empresas que exigen una plataforma de nube privada autónoma, automatización completa de ciclo de vida (SDDC Manager), seguridad de red estricta (NSX) y gestión de flotas a gran escala.</p>
                 </div>
             </div>
         </div>
 
         <!-- Slide 2 -->
         <div class="slide" id="slide-2">
-            <span class="badge">Gestión Centralizada</span>
-            <h2>VCF Management Services (VCFMS): El Nuevo Runtime Unificado</h2>
-            <p>Uno de los cambios estructurales más importantes en la versión 9.1 es la unificación de los servicios de gestión de la plataforma:</p>
+            <span class="badge">Estructura de Licenciamiento</span>
+            <h2>Modelo de Licenciamiento Comercial: Reglas y Mínimos</h2>
+            <p>Para dimensionar correctamente una propuesta comercial, es fundamental conocer las restricciones de Broadcom:</p>
             <ul>
-                <li><strong>Consolidación de Servicios:</strong> VCFMS unifica el License Server, el Software Depot y Salt RaaS en un único entorno de ejecución común.</li>
-                <li><strong>Eliminación de Sprawl:</strong> Reduce drásticamente la complejidad administrativa y el consumo de recursos de los servicios de gestión independientes.</li>
-                <li><strong>Infraestructura API-First:</strong> Todos los componentes se comunican bajo un modelo unificado de contratos API, facilitando la automatización continua.</li>
+                <li><strong>Mínimo de Núcleos:</strong> Cada procesador físico (CPU) requiere un mínimo de licenciamiento asignado (generalmente 16 núcleos por CPU) para garantizar el cumplimiento de contratos.</li>
+                <li><strong>VVF (vSphere Foundation):</strong> Licencia el cómputo (vSphere), el almacenamiento hiperconvergente base (vSAN), analítica (VCF Operations) y Kubernetes nativo (VKS).</li>
+                <li><strong>VCF (Cloud Foundation):</strong> Paquete todo en uno que incluye toda la pila VVF más redes definidas por software (NSX) y el motor de automatización de nube (SDDC Manager).</li>
             </ul>
         </div>
 
         <!-- Slide 3 -->
         <div class="slide" id="slide-3">
-            <span class="badge">Innovación en Parches</span>
-            <h2>vCenter Quick Patching: Cambiando el Modelo de Actualización</h2>
-            <p>vCenter Quick Patching transforma radicalmente la forma en que se aplican parches de seguridad críticos:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Funcionamiento Binario</h3>
-                    <p>En lugar de actualizar todos los paquetes RPM independientemente de si cambiaron o no, solo modifica los binarios específicos afectados por el parche.</p>
-                </div>
-                <div class="card">
-                    <h3>Impacto Operativo</h3>
-                    <p>El tiempo de inactividad se mide en <strong>segundos (o cero downtime)</strong> en lugar de horas. Las máquinas virtuales, clústeres de Kubernetes y flujos de API continúan ejecutándose sin interrupción.</p>
-                </div>
-            </div>
+            <span class="badge">Portafolio VVF 9.1</span>
+            <h2>VMware vSphere Foundation (VVF 9.1): Componentes Clave</h2>
+            <p>VVF 9.1 consolida las tecnologías esenciales que todo centro de datos moderno necesita:</p>
+            <ul>
+                <li><strong>vSphere Enterprise Plus / Advanced:</strong> El hipervisor líder de mercado con alta disponibilidad (HA) y balanceo dinámico (DRS).</li>
+                <li><strong>vSAN 9.1:</strong> Almacenamiento hiperconvergente de alto rendimiento basado en software (ESA y OSA).</li>
+                <li><strong>VCF Operations:</strong> Analítica predictiva, supervisión de capacidad y observabilidad a 2 segundos[cite: 33].</li>
+                <li><strong>vSphere Kubernetes Service (VKS):</strong> Orquestador de contenedores integrado en el hipervisor.</li>
+            </ul>
         </div>
 
         <!-- Slide 4 -->
         <div class="slide" id="slide-4">
-            <span class="badge">Optimización de Kernel (ESXi 9.1)</span>
-            <h2>Topology Aware Scheduling: Mitigación de Latencia NUMA en v9.1</h2>
-            <p>El planificador del kernel ESXi en la versión 9.1 rediseña la afinidad de hilos para arquitecturas de procesadores de alta densidad de núcleos (AMD EPYC e Intel Xeon Scalable):</p>
-            <ul>
-                <li><strong>Afinidad de Caché L3 Estricta:</strong> Evita la migración aleatoria de hilos de ejecución (*vCPUs*) entre nodos NUMA distantes, maximizando el rendimiento de las cachés de último nivel.</li>
-                <li><strong>Ganancias de Rendimiento Transaccional:</strong> Demuestra mejoras significativas en rendimiento bajo cargas intensivas de bases de datos transaccionales.</li>
-                <li><strong>Gestión de Dominios de Memoria:</strong> Prevención algorítmica del empaquetamiento excesivo de máquinas virtuales, reduciendo drásticamente las penalizaciones por saltos inter-socket.</li>
-            </ul>
+            <span class="badge">Componentes VVF - vSphere</span>
+            <h2>Componente 1: vSphere 9.1 (Cómputo y Resiliencia)</h2>
+            <p><strong>Qué hace:</strong> Abstrae el hardware físico en máquinas virtuales y gestiona la alta disponibilidad (HA) y el balanceo de carga (DRS)[cite: 33].</p>
+            <div class="example-box">
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Consolidación de 60 servidores físicos antiguos (de diferentes marcas) en un nuevo clúster de 4 servidores de alta densidad con procesadores modernos. Gracias al planificador <em>Topology Aware Scheduling</em>, se mejora el rendimiento de transacciones en bases de datos en un 68% sin comprar hardware adicional[cite: 33].
+            </div>
         </div>
 
         <!-- Slide 5 -->
         <div class="slide" id="slide-5">
-            <span class="badge">Subsistema de Memoria</span>
-            <h2>Enhanced NVMe Memory Tiering: Arquitectura Tier 0 y Tier 1</h2>
-            <p>Solución arquitectónica orientada a mitigar los costos prohibitivos de la expansión masiva de memoria DRAM:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Jerarquía de Niveles de Memoria</h3>
-                    <p><strong>Tier 0 (DRAM):</strong> Memoria principal de ultra baja latencia para páginas de acceso caliente.<br><strong>Tier 1 (NVMe local):</strong> Dispositivos NVMe de alta velocidad gestionados por el kernel como extensión de memoria.</p>
-                </div>
-                <div class="card">
-                    <h3>Impacto Financiero y Técnico</h3>
-                    <p>Descarga inteligente de hasta el 25% de páginas frías/templadas hacia NVMe sin afectar la capacidad de respuesta, logrando hasta un <strong>40% de reducción en el TCO del servidor</strong>.</p>
-                </div>
+            <span class="badge">Componentes VVF - vSAN</span>
+            <h2>Componente 2: vSAN 9.1 (Almacenamiento Hiperconvergente)</h2>
+            <p><strong>Qué hace:</strong> Agrupa los discos locales NVMe/SSD de los servidores en un almacén de datos distribuido y resiliente, eliminando la necesidad de cabinas SAN/NAS externas[cite: 33].</p>
+            <div class="example-box">
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Implementación de un clúster hiperconvergente en una empresa de retail para su sistema ERP. Se habilita <em>Enhanced NVMe Memory Tiering</em>, usando discos NVMe locales como nivel secundario de memoria para reducir los costos de ampliación de DRAM en un 40%[cite: 33].
             </div>
         </div>
 
         <!-- Slide 6 -->
         <div class="slide" id="slide-6">
-            <span class="badge">Criptografía por Hardware</span>
-            <h2>Aceleración de Encrypted vMotion mediante Intel QAT (QuickAssist Technology)</h2>
-            <p>El cifrado de máquinas virtuales en tránsito durante migraciones vivas consume ciclos masivos de CPU:</p>
-            <ul>
-                <li><strong>Offload Criptográfico en Origen:</strong> Delega el procesamiento de algoritmos de cifrado pesado directamente a los aceleradores de silicio Intel QAT instalados en el host de origen.</li>
-                <li><strong>Reducción de Overhead en CPU:</strong> Disminuye drásticamente el consumo de CPU del host origen y reduce la sobrecarga en el host de destino durante migraciones cifradas masivas.</li>
-                <li><strong>Cumplimiento Normativo:</strong> Permite cumplir estrictas normativas de seguridad en tránsito sin degradar los SLAs operativos ni saturar los enlaces de red.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 7 -->
-        <div class="slide" id="slide-7">
-            <span class="badge">Seguridad del Hipervisor</span>
-            <h2>User-Level Monitor (ULM): Reducción de la Superficie de Ataque</h2>
-            <p>La arquitectura de seguridad del hipervisor evoluciona significativamente en la versión 9.1:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Reimplementación del Monitor</h3>
-                    <p>User-Level Monitor (ULM) pasa a ser el estándar por defecto para todas las máquinas virtuales, ejecutando el monitor fuera del modo de núcleo privilegiado (*privileged kernel mode*).</p>
-                </div>
-                <div class="card">
-                    <h3>Mitigación de Riesgos</h3>
-                    <p>Esto reduce de forma drástica y significativa la superficie de ataque del hipervisor frente a vulnerabilidades a nivel de sistema operativo invitado.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 8 -->
-        <div class="slide" id="slide-8">
-            <span class="badge">Almacenamiento vSAN 9.1</span>
-            <h2>Global Deduplication y Compresión Avanzada</h2>
-            <p>vSAN 9.1 introduce mejoras fundamentales en la eficiencia del almacenamiento hiperconvergente:</p>
-            <ul>
-                <li><strong>Deduplicación a Nivel de Clúster:</strong> Operativa a nivel de todo el clúster (Global Deduplication) y no solo por grupo de discos.</li>
-                <li><strong>Ejecución en Background:</strong> Opera continuamente en segundo plano y es totalmente compatible con entornos cifrados.</li>
-                <li><strong>TCO de Almacenamiento Reducido:</strong> Combinada con la compresión mejorada, Broadcom reporta hasta un <strong>39% de reducción en el TCO de almacenamiento</strong>, ideal para entornos regulados.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 9 -->
-        <div class="slide" id="slide-9">
-            <span class="badge">Inteligencia Artificial y HPC</span>
-            <h2>Soporte Multi-Vendor AI Platform Readiness y Enhanced DirectPath I/O</h2>
-            <p>VCF 9.1 expande drásticamente las capacidades para cargas de trabajo de Inteligencia Artificial y Computación de Alto Rendimiento (HPC):</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Hardware Certificado</h3>
-                    <p>Soporte nativo para NVIDIA ConnectX-7, BlueField-3 y aceleradores AMD (como AMD MI350) mediante Enhanced DirectPath I/O.</p>
-                </div>
-                <div class="card">
-                    <h3>Virtualización de Hardware</h3>
-                    <p>Permite realizar <strong>vMotion, Storage vMotion, Instantáneas y Live Patching</strong> sobre dispositivos acelerados sin necesidad de hacer un passthrough tradicional estático.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 10 -->
-        <div class="slide" id="slide-10">
-            <span class="badge">Automatización de Estado</span>
-            <h2>vSphere Configuration Profiles y Zero Touch Provisioning (ZTP)</h2>
-            <ul>
-                <li><strong>Zero Touch Provisioning (ZTP):</strong> Reemplaza al tradicional Auto Deploy, automatizando el despliegue y la configuración inicial de hosts físicos sin intervención manual.</li>
-                <li><strong>Eliminación de Configuration Drift:</strong> Estandariza los parámetros de clúster, vSAN y conmutadores distribuidos aplicando perfiles de estado deseado (*desired-state*).</li>
-                <li><strong>APIs Unificadas:</strong> Red de llamadas OpenAPI 3.0 para la gestión programática de flotas completas.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 11 -->
-        <div class="slide" id="slide-11">
-            <span class="badge">Arquitectura VVF 9.1</span>
-            <h2>Desglose Técnico de Componentes en VMware vSphere Foundation (VVF 9.1)</h2>
-            <p>VVF 9.1 empaqueta tecnologías críticas para la consolidación de centros de datos y la adopción de microservicios:</p>
-            <ul>
-                <li><strong>vSphere Enterprise Plus / Advanced:</strong> Núcleo de virtualización de alta disponibilidad y gestión centralizada.</li>
-                <li><strong>vSAN 9.1 (ESA / OSA):</strong> Almacenamiento hiperconvergente distribuido nativo del kernel con soporte para NFS v4.1 VAAI-NAS Unmap.</li>
-                <li><strong>VCF Operations:</strong> Plataforma de analítica predictiva, gestión de capacidad y monitoreo de salud.</li>
-                <li><strong>vSphere Kubernetes Service (VKS):</strong> Orquestación nativa de contenedores ejecutada directamente en el hipervisor mediante el plano Supervisor.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 12 -->
-        <div class="slide" id="slide-12">
-            <span class="badge">Arquitectura VCF 9.1</span>
-            <h2>Desglose Técnico de Componentes en VMware Cloud Foundation (VCF 9.1)</h2>
-            <p>VCF 9.1 representa la evolución total hacia un modelo de operación estilo nube pública (*Public Cloud Experience*) implementado on-premises:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Fleet Management</h3>
-                    <p>Consola unificada para administrar múltiples instancias independientes de VCF y dominios de cargas distribuidas globalmente.</p>
-                </div>
-                <div class="card">
-                    <h3>Automatización de Ciclo de Vida</h3>
-                    <p>SDDC Manager orquesta actualizaciones de toda la pila validando dependencias y asegurando conformidad regulatoria continua.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 13 -->
-        <div class="slide" id="slide-13">
-            <span class="badge">Componentes VCF / Redes</span>
-            <h2>Deep Dive: NSX 9.1 — Microsegmentación y EVPN Arquitectura Avanzada</h2>
-            <p>NSX 9.1 habilita la arquitectura de red y seguridad Zero Trust dentro de VCF:</p>
-            <ul>
-                <li><strong>Microsegmentación Automatizada:</strong> Políticas de cortafuegos distribuidas basadas en contexto que bloquean el movimiento lateral de amenazas entre VMs.</li>
-                <li><strong>EVPN Architectural Enhancements:</strong> Mejoras arquitectónicas en EVPN que simplifican y escalan las redes de centros de datos privados masivos.</li>
-                <li><strong>Gateways de Alta Disponibilidad:</strong> Servicios L4-L7 integrados de ultra alto rendimiento sin dependencia de appliances físicos externos.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 14 -->
-        <div class="slide" id="slide-14">
-            <span class="badge">Protección de Datos</span>
-            <h2>Recuperación ante Desastres y Ransomware Integrada</h2>
-            <p>VCF 9.1 integra capacidades nativas de continuidad de negocio de nivel empresarial:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Ransomware Recovery Nativo</h3>
-                    <p>Capacidad incorporada para la recuperación frente a ataques de ransomware mediante aislamiento en entornos limpios (*isolated clean rooms*).</p>
-                </div>
-                <div class="card">
-                    <h3>vSAN Stretched Clusters</h3>
-                    <p>Modos de mantenimiento optimizados por sitio y replicación basada en instantáneas profundas (*deep snapshots*) que reducen drásticamente los tiempos de recuperación.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 15 -->
-        <div class="slide" id="slide-15">
-            <span class="badge">Resiliencia Operativa</span>
-            <h2>Zero-Downtime Operations: Live Patching para Hosts con TPM</h2>
-            <p>La gestión de parches de seguridad en el kernel se optimiza mediante hardware de confianza:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Parches en Vivo con TPM</h3>
-                    <p>Permite aplicar actualizaciones críticas de daemons y componentes de usuario/kernel sin requerir la evacuación de VMs ni reinicios disruptivos en hosts con TPM habilitado.</p>
-                </div>
-                <div class="card">
-                    <h3>Impacto Operativo</h3>
-                    <p>Elimina el tiempo de inactividad para hasta el <strong>80% de las actualizaciones de seguridad</strong> del hipervisor.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 16 -->
-        <div class="slide" id="slide-16">
-            <span class="badge">Observabilidad en Tiempo Real</span>
-            <h2>Telemetría a 2 Segundos y VCF Operations</h2>
-            <p>La visibilidad operacional abandona los sondeos tradicionales de intervalos largos:</p>
-            <ul>
-                <li><strong>Muestreo de Alta Fidelidad:</strong> Captura métricas críticas cada 2 segundos, eliminando el suavizado estadístico (*smoothing*) que ocultaba picos transitorios de latencia.</li>
-                <li><strong>Proactive Diagnostic Insights:</strong> Correlaciona automáticamente eventos de kernel y latencias de vSAN para superficializar las causas raíz directamente en la consola, reduciendo el tiempo de resolución en un 60%.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 17 -->
-        <div class="slide" id="slide-17">
-            <span class="badge">Actualización VCF 9.1.1</span>
-            <h2>What's New in VCF 9.1.1: Soporte para Back-in-Time Upgrades</h2>
-            <p>El parche de mantenimiento <strong>9.1.1</strong> introduce mejoras críticas enfocadas en la flexibilidad de actualización:</p>
-            <ul>
-                <li><strong>Rutas de Actualización Directas:</strong> Se solucionaron las restricciones de versiones intermedias (*back-in-time releases*), permitiendo una ruta de actualización limpia y directa hacia VCF 9.1.1 desde versiones previas soportadas.</li>
-                <li><strong>Pre-checks Mejorados:</strong> Validación rigurosa de firmware, drivers y metadatos de red antes de ejecutar el mantenimiento para evitar fallos de compatibilidad.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 18 -->
-        <div class="slide" id="slide-18">
-            <span class="badge">Optimización de Recursos 9.1.1</span>
-            <h2>Reducción de Huella (Footprint) y Despliegues Small HA en VCF 9.1.1</h2>
-            <p>Optimización sustancial en los requerimientos de recursos para los servicios de gestión de VCF (VCFMS):</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Perfil Small por Defecto</h3>
-                    <p>El instalador de VCF ahora utiliza por defecto el tamaño <strong>Small</strong> en lugar de Medium para nuevos despliegues de flotas e instancias.</p>
-                </div>
-                <div class="card">
-                    <h3>Alta Disponibilidad (Small HA)</h3>
-                    <p>Mantiene el conjunto completo de características de producción con alta disponibilidad, reduciendo la sobrecarga de memoria y CPU para entornos Edge y laboratorios.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 19 -->
-        <div class="slide" id="slide-19">
-            <span class="badge">Gestión Centralizada 9.1.1</span>
-            <h2>Automatización de Configuración con VMware Salt y Gestión de Certificados</h2>
-            <p>VCF 9.1.1 mejora drásticamente las operaciones Day-2:</p>
-            <ul>
-                <li><strong>VMware Salt for VCF Components API:</strong> Permite la gestión programática de configuraciones en toda la pila VCF, facilitando la automatización de la deriva de configuración (*configuration drift*).</li>
-                <li><strong>Gestión Automatizada de Certificados y Contraseñas:</strong> Generación de alarmas de expiración, renovación automática con VMCA, auditoría de bloqueos de cuentas y políticas de contraseñas centralizadas.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 20 -->
-        <div class="slide" id="slide-20">
-            <span class="badge">Redes Avanzadas 9.1.1</span>
-            <h2>VLAN-backed VPCs y EVPN Active/Active Routing</h2>
-            <p>Mejoras de conectividad y redes en el release 9.1.1:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>VLAN-backed VPCs sin Overlay TEP</h3>
-                    <p>Permite consumir VPCs en VCF Automation con tráfico fluyendo directamente sobre VLANs físicas sin encapsulación de túnel overlay.</p>
-                </div>
-                <div class="card">
-                    <h3>EVPN Active/Active Gateways</h3>
-                    <p>Los controladores EVPN en pasarelas distribuidas pueden operar en diseño activo/activo con sesiones BGP independientes, mejorando la resiliencia ante fallos.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 21 -->
-        <div class="slide" id="slide-21">
-            <span class="badge">Seguridad y Secure Boot 9.1.1</span>
-            <h2>Remediación de Certificados Secure Boot y Cumplimiento</h2>
-            <p>VCF 9.1.1 aborda de forma coordinada la expiración de certificados antiguos de Microsoft Secure Boot:</p>
-            <ul>
-                <li><strong>Detección de Claves Obsoletas:</strong> Alarmas automáticas en vCenter identifican VMs con Secure Boot habilitado que utilizan una clave de plataforma nula (*NULL Platform Key*).</li>
-                <li><strong>Actualización Silenciosa:</strong> ESXi puede actualizar de manera silenciosa la clave durante el reinicio de invitados virtuales que no utilicen un TPM virtual.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 22 -->
-        <div class="slide" id="slide-22">
-            <span class="badge">Corrección de Errores 9.1.1</span>
-            <h2>Corrección de Errores Críticos y Estabilidad (Bug Fixes en 9.1.1)</h2>
-            <p>El parche 9.1.1 incorpora acumulativamente correcciones esenciales para entornos de misión crítica:</p>
-            <ul>
-                <li><strong>Sincronización en Stretched Clusters:</strong> Resolución de bloqueos e incidencias de sincronización de metadatos en vSAN ESA durante conmutaciones por error (*failover*).</li>
-                <li><strong>Manejo de Nombres Mixtos:</strong> Soporte robusto para FQDNs y nombres de host con mayúsculas/minúsculas mixtas, evitando fallos de importación y certificados.</li>
-                <li><strong>Optimización de Logs:</strong> Corrección en la acumulación de búferes de Fluentd que llenaban los discos de registro en versiones anteriores.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 23 -->
-        <div class="slide" id="slide-23">
-            <span class="badge">Matriz de Decisión</span>
-            <h2>Matriz Comparativa Técnica: VVF 9.1 vs VCF 9.1</h2>
-            <ul>
-                <li><strong>Cómputo (vSphere 9.1):</strong> Presente en ambas ediciones con optimizaciones de kernel y Topology Aware Scheduling idénticas.</li>
-                <li><strong>Almacenamiento (vSAN 9.1):</strong> vSAN estándar/avanzado en VVF frente a vSAN Enterprise completo con Global Deduplication y ESA Sharing en VCF.</li>
-                <li><strong>Redes y Seguridad (NSX 9.1):</strong> <em>Exclusivo de VCF 9.1</em> con microsegmentación y EVPN avanzado (requiere licencia independiente en VVF).</li>
-                <li><strong>Automatización SDDC / Fleet:</strong> <em>Exclusivo de VCF 9.1</em> para gestión unificada del ciclo de vida y flotas.</li>
-            </ul>
-        </div>
-
-        <!-- Slide 24 -->
-        <div class="slide" id="slide-24">
-            <span class="badge">Conclusión Técnica</span>
-            <h2>Blueprint de Arquitectura y Recomendaciones de Adopción (9.1.1)</h2>
-            <p>Para arquitectos e ingenieros evaluando el despliegue:</p>
-            <ul>
-                <li><strong>Adopte VVF 9.1</strong> cuando el objetivo principal sea la consolidación de cómputo y almacenamiento hiperconvergente de alto rendimiento con analítica avanzada.</li>
-                <li><strong>Adopte VCF 9.1</strong> cuando la estrategia corporativa exija automatización completa de nube privada, seguridad Zero Trust con NSX y gestión de flotas a escala global.</li>
-                <li><strong>Actualice obligatoriamente a VCF 9.1.1</strong> para beneficiarse de la reducción de footprint de gestión, el soporte de back-in-time upgrades, la remediación de Secure Boot y la automatización con VMware Salt.</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <footer>
-        <span id="slide-counter">Diapositiva 1 de 24</span>
-        <div class="nav-buttons">
-            <button onclick="prevSlide()">Anterior</button>
-            <button onclick="nextSlide()">Siguiente</button>
-        </div>
-    </footer>
-
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const counter = document.getElementById('slide-counter');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
-            });
-            counter.textContent = `Diapositiva ${index + 1} de ${slides.length}`;
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-    </script>
-</body>
-</html>
+            <span class="badge">Componentes VVF - Operations</span>
+            <h2>Componente 3: VCF Operations (Observabilidad y Analítica)</h2>
+            <p><strong>Qué hace:</strong> Monitorea la salud del centro de datos en tiempo real, predice cuellos de botella y ofrece diagnósticos proactivos[cite: 33].</p>
+            <div class="example-box">
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Una entidad bancaria utiliza la observabilidad a 2 segundos de VCF Operations para capturar micro-congestiones de E/S en sus bases de datos transaccionales, reduciendo el tiempo de resolución de problemas (*troubleshooting*) en un 60%
