@@ -221,4 +221,237 @@
             <h2>Componente 3: VCF Operations (Observabilidad y Analítica)</h2>
             <p><strong>Qué hace:</strong> Monitorea la salud del centro de datos en tiempo real, predice cuellos de botella y ofrece diagnósticos proactivos[cite: 33].</p>
             <div class="example-box">
-                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Una entidad bancaria utiliza la observabilidad a 2 segundos de VCF Operations para capturar micro-congestiones de E/S en sus bases de datos transaccionales, reduciendo el tiempo de resolución de problemas (*troubleshooting*) en un 60%
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Una entidad bancaria utiliza la observabilidad a 2 segundos de VCF Operations para capturar micro-congestiones de E/S en sus bases de datos transaccionales, reduciendo el tiempo de resolución de problemas (*troubleshooting*) en un 60%[cite: 33].
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide" id="slide-7">
+            <span class="badge">Componentes VVF - VKS</span>
+            <h2>Componente 4: vSphere Kubernetes Service - VKS (Contenedores)</h2>
+            <p><strong>Qué hace:</strong> Ejecuta clústeres de Kubernetes directamente sobre el hipervisor (Supervisor) con aislamiento estricto[cite: 33, 35].</p>
+            <div class="example-box">
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Un equipo de desarrollo de software necesita desplegar aplicaciones nativas en la nube basadas en microservicios. Con VKS, el equipo de TI les entrega clústeres de contenedores en minutos aprovechando la misma infraestructura virtual existente.
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide" id="slide-8">
+            <span class="badge">Portafolio VCF 9.1</span>
+            <h2>VMware Cloud Foundation (VCF 9.1): La Nube Privada Autónoma</h2>
+            <p>VCF 9.1 toma la potencia de VVF y la eleva mediante automatización completa, redes avanzadas y gestión de flotas a gran escala[cite: 33]:</p>
+            <ul>
+                <li><strong>SDDC Manager:</strong> Automatización total del ciclo de vida (despliegue, parches, actualizaciones).</li>
+                <li><strong>NSX 9.1:</strong> Redes y seguridad avanzada con microsegmentación Zero Trust.</li>
+                <li><strong>vSAN Enterprise:</strong> Capacidades avanzadas de almacenamiento, clústeres estirados y recuperación.</li>
+                <li><strong>HCX:</strong> Movilidad de cargas y extensión de red híbrida.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 9 -->
+        <div class="slide" id="slide-9">
+            <span class="badge">Componentes VCF - SDDC Manager</span>
+            <h2>Componente 1: SDDC Manager & Fleet Management</h2>
+            <p><strong>Qué hace:</strong> Orquesta la infraestructura como un servicio de nube privada unificado y gestiona múltiples flotas de nubes.</p>
+            <div class="example-box">
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Una corporación multinacional con sedes en 5 países utiliza <em>Fleet Management</em> para administrar de forma centralizada y uniforme los dominios de carga de trabajo de todos sus centros de datos desde una sola consola[cite: 33].
+            </div>
+        </div>
+
+        <!-- Slide 10 -->
+        <div class="slide" id="slide-10">
+            <span class="badge">Componentes VCF - NSX</span>
+            <h2>Componente 2: Redes NSX 9.1 (Seguridad y Microsegmentación)</h2>
+            <p><strong>Qué hace:</strong> Virtualiza la red por completo y aplica políticas de cortafuegos distribuidas basadas en contexto[cite: 33].</p>
+            <div class="example-box">
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Un cliente del sector salud necesita cumplir estrictas normas de aislamiento de datos (HIPAA). Con NSX, implementan microsegmentación automática para evitar que un ataque en la red de oficinas se propague hacia los servidores de historias clínicas.
+            </div>
+        </div>
+
+        <!-- Slide 11 -->
+        <div class="slide" id="slide-11">
+            <span class="badge">Componentes VCF - Storage & HCX</span>
+            <h2>Componente 3 & 4: vSAN Enterprise & HCX (Continuidad y Movilidad)</h2>
+            <p><strong>Qué hace:</strong> Brinda almacenamiento geográficamente resiliente y herramientas de migración masiva de máquinas virtuales[cite: 33].</p>
+            <div class="example-box">
+                <strong>💡 Ejemplo de Implementación en Cliente:</strong> Migración de 400 máquinas virtuales desde un datacenter heredado hacia VCF utilizando <em>HCX</em> con extensión de capa 2, logrando la mudanza completa sin cambiar direcciones IP de las aplicaciones y sin tiempo de inactividad planificado.
+            </div>
+        </div>
+
+        <!-- Slide 12 -->
+        <div class="slide" id="slide-12">
+            <span class="badge">Argumentos de Venta</span>
+            <h2>Matriz Comercial: ¿Cuándo posicionar VVF y cuándo VCF?</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Posicionar VVF 9.1 cuando:</h3>
+                    <p>El cliente busca una solución robusta de virtualización y almacenamiento hiperconvergente, pero no requiere automatización completa de nube privada ni redes complejas con NSX de forma nativa.</p>
+                </div>
+                <div class="card">
+                    <h3>Posicionar VCF 9.1 cuando:</h3>
+                    <p>El cliente exige automatización de ciclo de vida (SDDC Manager), seguridad de red estricta (Zero Trust con NSX), gestión multi-sitio y una verdadera experiencia de nube pública on-premises.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13 -->
+        <div class="slide" id="slide-13">
+            <span class="badge">Innovaciones v9.1</span>
+            <h2>Valor de Preventa: Rendimiento y Seguridad Avanzada en v9.1</h2>
+            <ul>
+                <li><strong>Live Patching con TPM:</strong> Permite aplicar parches críticos del hipervisor sin apagar máquinas virtuales ni evacuar hosts, logrando cero downtime en el 80% de las actualizaciones[cite: 33].</li>
+                <li><strong>Encrypted vMotion con Intel QAT:</strong> Descarga el cifrado pesado de las migraciones vivas hacia aceleradores de hardware, ahorrando un 70% de CPU en origen[cite: 33].</li>
+                <li><strong>Multi-Vendor AI Platform Readiness:</strong> Soporte certificado para hardware de IA (NVIDIA/AMD) con virtualización de dispositivos de alto rendimiento.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 14 -->
+        <div class="slide" id="slide-14">
+            <span class="badge">Actualización VCF 9.1.1</span>
+            <h2>Ampliación Técnica: ¿Qué trae la Actualización VCF 9.1.1?</h2>
+            <p>El parche de mantenimiento <strong>9.1.1</strong> introduce optimizaciones operativas críticas para resolver retos del día a día (*Day-2 operations*):</p>
+            <ul>
+                <li><strong>Reducción de la Huella (Footprint):</strong> Los servicios de gestión de VCF (VCFMS) ahora despliegan por defecto el tamaño <em>Small</em> en lugar de Medium, ahorrando valiosos recursos de CPU y memoria en entornos Edge o medianos.</li>
+                <li><strong>Soporte para Back-in-Time Upgrades:</strong> Rutas de actualización directas y más flexibles desde versiones anteriores soportadas.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 15 -->
+        <div class="slide" id="slide-15">
+            <span class="badge">Actualización VCF 9.1.1</span>
+            <h2>Mejoras Operativas en VCF 9.1.1: Quick Patch y Pre-checks</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>vCenter Quick Patch</h3>
+                    <p>Aplica actualizaciones binarias directas en vCenter reduciendo el mantenimiento a menos de 5 minutos, manteniendo la ejecución de cargas y APIs intactas.</p>
+                </div>
+                <div class="card">
+                    <h3>Motor de Pre-checks Avanzado</h3>
+                    <p>Verificaciones previas mucho más estrictas que validan firmware, drivers y estados de red antes de ejecutar cualquier asistente de actualización.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16 -->
+        <div class="slide" id="slide-16">
+            <span class="badge">Actualización VCF 9.1.1</span>
+            <h2>Gestión de Configuraciones y Automatización con VMware Salt</h2>
+            <p>VCF 9.1.1 potencia la automatización Day-2 mediante la integración de herramientas nativas:</p>
+            <ul>
+                <li><strong>VMware Salt for VCF Components API:</strong> Permite la gestión programática de configuraciones en toda la pila de VCF, facilitando la automatización de la deriva de configuración (*configuration drift*).</li>
+                <li><strong>Gestión Automatizada de Certificados y Contraseñas:</strong> VCF Operations centraliza la rotación de certificados (con VMCA), auditoría de bloqueos de cuentas y políticas de contraseñas para todos los componentes.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 17 -->
+        <div class="slide" id="slide-17">
+            <span class="badge">Actualización VCF 9.1.1</span>
+            <h2>Mejoras de Redes en VCF 9.1.1: VLAN-backed VPCs y EVPN</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>VLAN-backed VPCs</h3>
+                    <p>Permite consumir VPCs en VCF Automation con tráfico fluyendo directamente sobre VLANs físicas sin la sobrecarga de encapsulación de túnel overlay.</p>
+                </div>
+                <div class="card">
+                    <h3>EVPN Active/Active Gateways</h3>
+                    <p>Los controladores EVPN en pasarelas distribuidas operan en diseño activo/activo con sesiones BGP independientes, maximizando la resiliencia de red.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18 -->
+        <div class="slide" id="slide-18">
+            <span class="badge">Actualización VCF 9.1.1</span>
+            <h2>Seguridad: Remediación de Secure Boot (NULL Platform Keys)</h2>
+            <p>Una de las adiciones de seguridad más importantes en VCF 9.1.1 aborda la expiración de certificados antiguos de Microsoft Secure Boot:</p>
+            <ul>
+                <li><strong>Detección Automática:</strong> Un nuevo sensor en vCenter identifica VMs con Secure Boot habilitado que poseen una clave de plataforma obsoleta (*NULL Platform Key*).</li>
+                <li><strong>Actualización Silenciosa:</strong> ESXi puede actualizar de manera silenciosa la clave durante el reinicio de las máquinas virtuales invitadas que no utilicen un TPM virtual.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 19 -->
+        <div class="slide" id="slide-19">
+            <span class="badge">Actualización VCF 9.1.1</span>
+            <h2>Estabilidad Crítica: Corrección de Errores (Bug Fixes en 9.1.1)</h2>
+            <p>El parche 9.1.1 soluciona incidencias reportadas en implementaciones de misión crítica:</p>
+            <ul>
+                <li><strong>Sincronización en Stretched Clusters:</strong> Resolución definitiva de problemas de metadatos en vSAN ESA durante eventos de conmutación por error (*failover*) geográfico.</li>
+                <li><strong>Soporte de Nombres Mixtos:</strong> Corrección en validaciones de DNS y certificados para FQDNs con mayúsculas y minúsculas mixtas.</li>
+                <li><strong>Optimización de Logs:</strong> Solución a la saturación de discos de registro causada por acumulación en los búferes de Fluentd.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 20 -->
+        <div class="slide" id="slide-20">
+            <span class="badge">Argumentos Comerciales</span>
+            <h2>Speech de Preventa: ¿Cómo presentar VCF 9.1.1 al cliente?</h2>
+            <p>Utilice este enfoque durante las reuniones de arquitectura y preventa:</p>
+            <ul>
+                <li><em>"Con VCF 9.1.1, no solo obtienes la plataforma de nube privada más segura del mercado con cumplimiento FIPS 140-3[cite: 33, 35] y TLS 1.3[cite: 35, 58], sino que reducimos drásticamente los costos operativos Day-2."</em></li>
+                <li><em>"Gracias a la reducción de huella en los servicios de gestión (tamaño Small por defecto), la automatización con VMware Salt, y el motor de Quick Patch, su equipo técnico invertirá menos tiempo apagando incendios y más tiempo entregando valor al negocio."</em></li>
+            </ul>
+        </div>
+
+        <!-- Slide 21 -->
+        <div class="slide" id="slide-21">
+            <span class="badge">Resumen Técnico</span>
+            <h2>Checklist de Diseño para Arquitectos de Preventa</h2>
+            <ul>
+                <li>✔ **Validar Requisitos de Núcleos:** Asegurar el cumplimiento de los mínimos por CPU física.</li>
+                <li>✔ **Evaluar Almacenamiento:** Posicionar vSAN ESA para clientes con NVMe buscando máxima eficiencia de compresión y NVMe Memory Tiering[cite: 33].</li>
+                <li>✔ **Dimensionar Redes:** Introducir NSX 9.1 para proyectos que requieran microsegmentación y arquitectura EVPN Active/Active.</li>
+                <li>✔ **Planificar Actualizaciones:** Diseñar siempre la implementación o actualización directa sobre la base de **VCF 9.1.1** para aprovechar las mejoras en huella de gestión y pre-checks de seguridad.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 22 -->
+        <div class="slide" id="slide-22">
+            <span class="badge">Conclusión</span>
+            <h2>Cierre y Llamado a la Acción Comercial</h2>
+            <p>El ecosistema VMware 9.1 & 9.1.1 representa el estándar de oro para la infraestructura híbrida moderna:</p>
+            <ul>
+                <li>Ofrece el menor TCO del mercado mediante optimizaciones de memoria y cómputo[cite: 33].</li>
+                <li>Garantiza resiliencia operativa y automatización inteligente a escala de flota.</li>
+                <li>Está completamente listo para acelerar cargas de trabajo de Inteligencia Artificial y aplicaciones nativas.</li>
+            </ul>
+            <p style="margin-top: 1rem; font-weight: bold; color: var(--secondary-color);">¡Listo para preparar sus dimensionamientos y propuestas comerciales con éxito!</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <span id="slide-counter">Diapositiva 1 de 22</span>
+        <div class="nav-buttons">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const counter = document.getElementById('slide-counter');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+            counter.textContent = `Diapositiva ${index + 1} de ${slides.length}`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    </script>
+</body>
+</html>
