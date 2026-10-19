@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación Técnica: VVF & VCF 9.1</title>
+    <title>Presentación Técnica Avanzada: VVF 9.1 & VCF 9.1</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --slide-bg: #1e293b;
-            --border-color: #334155;
-            --text-main: #f8fafc;
+            --bg-color: #0b0f19;
+            --slide-bg: #131c31;
+            --border-color: #1e293b;
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
             --accent-primary: #38bdf8;
             --accent-secondary: #818cf8;
+            --accent-success: #34d399;
+            --accent-warning: #fbbf24;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
             padding: 40px 20px;
+            line-height: 1.6;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         header {
@@ -30,29 +33,30 @@
             margin-bottom: 50px;
         }
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--accent-primary);
             margin-bottom: 10px;
+            letter-spacing: -0.5px;
         }
         header p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
         }
         .slide {
             background-color: var(--slide-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 40px;
+            padding: 45px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
         }
         .slide-number {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--accent-secondary);
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin-bottom: 12px;
             display: block;
         }
         h2 {
@@ -60,32 +64,45 @@
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 12px;
             margin-top: 0;
-            font-size: 1.8rem;
+            font-size: 1.85rem;
         }
         h3 {
             color: var(--accent-secondary);
-            margin-top: 25px;
-            font-size: 1.2rem;
+            margin-top: 30px;
+            font-size: 1.25rem;
         }
         ul {
-            line-height: 1.7;
-            color: var(--text-main);
+            margin: 15px 0;
+            padding-left: 20px;
         }
         li {
             margin-bottom: 10px;
+            color: var(--text-main);
         }
         .highlight {
             color: var(--accent-primary);
             font-weight: 600;
         }
+        .tech-pill {
+            display: inline-block;
+            background-color: #1e293b;
+            color: var(--accent-primary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: monospace;
+            border: 1px solid #334155;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 25px;
+            border-radius: 8px;
+            overflow: hidden;
         }
         th, td {
             border: 1px solid var(--border-color);
-            padding: 14px;
+            padding: 16px;
             text-align: left;
         }
         th {
@@ -94,20 +111,32 @@
             font-size: 1.05rem;
         }
         tr:nth-child(even) {
-            background-color: #1e293b;
+            background-color: #131c31;
         }
         tr:nth-child(odd) {
-            background-color: #273548;
+            background-color: #1a2642;
         }
         .badge {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
-            background-color: #0369a1;
-            color: #e0f2fe;
-            margin-right: 5px;
+            text-transform: uppercase;
+        }
+        .badge-green { background-color: #064e3b; color: #34d399; }
+        .badge-red { background-color: #7f1d1d; color: #fca5a5; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -115,106 +144,114 @@
 
 <div class="container">
     <header>
-        <h1>Arquitectura y Evolución: VVF 9.1 vs VCF 9.1</h1>
-        <p>Presentación Técnica Integral de Licenciamiento, Funcionalidades y Capacidades Enterprise</p>
+        <h1>Arquitectura Técnica: VMware vSphere Foundation & Cloud Foundation 9.1</h1>
+        <p>Análisis Profundo de Licenciamiento, Cambios Arquitectónicos y Capacidades Enterprise</p>
     </header>
 
     <!-- Diapositiva 1 -->
     <div class="slide">
         <span class="slide-number">Diapositiva 1 de 5</span>
-        <h2>Contexto Global y Arquitectura Base (Versión 9.1)</h2>
-        <ul>
-            <li><span class="highlight">Nuevo Estándar de Ciberresiliencia:</span> Diseñada para responder a los requerimientos normativos globales actuales (NIS2, DORA) con ciclos de mitigación de vulnerabilidades drásticamente reducidos.</li>
-            <li><span class="highlight">Unificación Operativa Obligatoria:</span> A partir de la versión 9, la gestión de inventarios, analítica y control de licencias se centraliza de manera nativa mediante <span class="highlight">VCF Operations</span> utilizando suscripciones basadas en archivos digitales.</li>
-            <li><span class="highlight">Soporte de Hardware de Próxima Generación:</span> Optimización profunda para arquitecturas de procesadores de alta densidad (AMD Turin/Venice, Intel Sapphire/Granite Rapids), soportando hasta 960 núcleos por socket y maximizando la consolidación.</li>
-        </ul>
+        <h2>Contexto Global y Arquitectura de Control de Versión 9.1</h2>
+        <p>La versión 9.1 introduce un cambio drástico en la unificación y gestión operativa de las plataformas privadas de infraestructura, alineándose con las exigencias normativas de ciberresiliencia global (NIS2, DORA).</p>
+        
+        <div class="grid-2">
+            <div class="card">
+                <h3>VCF License Server (Nueva Appliance)</h3>
+                <p>Se introduce una nueva <em>appliance</em> independiente y sin interfaz de usuario directa encargada de desacoplar la lógica de licenciamiento de VCF Operations. Ofrece gestión centralizada de suscripciones en un entorno protegido que se despliega y actualiza automáticamente durante la instalación.</p>
+            </div>
+            <div class="card">
+                <h3>Soporte de Hardware Avanzado</h3>
+                <p>Optimización nativa para procesadores de ultra-alta densidad como <span class="highlight">AMD Turin/Venice</span> e <span class="highlight">Intel Sapphire/Granite Rapids</span>, soportando flotas masivas de hasta <span class="highlight">960 núcleos por socket</span> con aceleración por hardware (Intel QAT) para cifrado.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Diapositiva 2 -->
     <div class="slide">
         <span class="slide-number">Diapositiva 2 de 5</span>
-        <h2>VMware vSphere Foundation (VVF) 9.1</h2>
-        <p>Plataforma avanzada de cargas de trabajo hiperconvergentes orientada a la unificación de Máquinas Virtuales (VMs) tradicionales y contenedores.</p>
+        <h2>VMware vSphere Foundation (VVF) 9.1 – Innovación en Infraestructura</h2>
+        <p>VVF 9.1 redefine la plataforma de cargas de trabajo combinando virtualización tradicional de VMs y contenedores nativos bajo una arquitectura de extremo rendimiento.</p>
         
-        <h3>Componentes del Paquete:</h3>
+        <h3>Optimizaciones Clave del Motor vSphere y vSAN:</h3>
         <ul>
-            <li>vSphere Enterprise Plus & vCenter Standard.</li>
-            <li>vSphere Kubernetes Service (VKS) con certificación CNCF.</li>
-            <li><span class="highlight">VMware vSAN:</span> Incluye <span class="highlight">0.25 TiB de capacidad por núcleo</span> con todas las funcionalidades avanzadas de almacenamiento.</li>
-            <li>VCF Operations (Componente esencial de observabilidad).</li>
-        </ul>
-
-        <h3>Novedades Técnicas Destacadas:</h3>
-        <ul>
-            <li><span class="highlight">NVMe Memory Tiering con Software Mirroring:</span> Elimina la dependencia de controladoras RAID físicas, reduciendo el TCO del servidor hasta en un 40%.</li>
-            <li><span class="highlight">Quick Patching:</span> Reduce drásticamente las ventanas de mantenimiento de hipervisores ESXi a menos de 5 minutos sin reinicios masivos de servicios.</li>
-            <li><span class="highlight">Escalabilidad de VKS:</span> Soporta hasta 500 clústeres VKS por Supervisor (mejora de 2.6x frente a versiones anteriores).</li>
+            <li><span class="highlight">NVMe Memory Tiering con Software Mirroring:</span> Permite utilizar almacenamiento NVMe de alta velocidad como un segundo nivel de memoria RAM. La versión 9.1 introduce espejeo basado en software nativo (eliminando la dependencia de RAID físico) con activación sin tiempo de inactividad, logrando hasta un <span class="highlight">40% de reducción en el TCO</span> y 15% mejor rendimiento en bases de datos.</li>
+            <li><span class="highlight">Quick Patching (ESXi y vCenter):</span> Reduce las ventanas de mantenimiento de hipervisores y servicios de gestión de 30 minutos a <span class="highlight">menos de 5 minutos</span> mediante actualizaciones modulares dirigidas, evitando reinicios masivos de servicios.</li>
+            <li><span class="highlight">Diagnóstico Nativo Asistido:</span> Reduce los esfuerzos de resolución de incidencias en un <span class="highlight">60%</span> al mostrar causas raíz y pasos de remediación guiados directamente en la consola de gestión.</li>
+            <li><span class="highlight">Escalabilidad de VKS (vSphere Kubernetes Service):</span> Un solo Supervisor ahora es capaz de gestionar hasta <span class="highlight">500 clústeres de Kubernetes</span> (mejora de 2.6x frente a versiones anteriores).</li>
+            <li><span class="highlight">Procesamiento Paralelo de DRS / vMotion:</span> Elimina los cuellos de botella secuenciales, acelerando las migraciones y balanceos de clústeres hasta en un <span class="highlight">65%</span> (especialmente crítico para cargas con GPUs e IA/ML).</li>
         </ul>
     </div>
 
     <!-- Diapositiva 3 -->
     <div class="slide">
         <span class="slide-number">Diapositiva 3 de 5</span>
-        <h2>VMware Cloud Foundation (VCF) 9.1</h2>
-        <p>La plataforma completa de <span class="highlight">Nube Privada Full-Stack IaaS</span> que automatiza la entrega de infraestructura bajo el modelo de un hyperscaler local.</p>
+        <h2>VMware Cloud Foundation (VCF) 9.1 – La Nube Privada Full-Stack</h2>
+        <p>VCF 9.1 entrega una plataforma automatizada de nube privada tipo <em>hyperscaler</em> local que unifica cómputo, almacenamiento, redes virtuales avanzadas y automatización de flotas.</p>
 
-        <h3>Componentes del Paquete:</h3>
+        <h3>Componentes y Funcionalidades Exclusivas:</h3>
         <ul>
-            <li>Todo lo incluido en VVF (vSphere, VKS, Operations).</li>
-            <li><span class="highlight">VMware vSAN Ampliado:</span> Asignación robusta de <span class="highlight">1 TiB de capacidad de almacenamiento por núcleo</span>.</li>
-            <li><span class="highlight">VMware NSX:</span> Virtualización de red avanzada, microsegmentación y pasarelas de tránsito.</li>
-            <li><span class="highlight">SDDC Manager y VCF Automation:</span> Automatización de flotas y gestión integral del ciclo de vida del datacenter.</li>
-        </ul>
-
-        <h3>Novedades Técnicas Destacadas:</h3>
-        <ul>
-            <li><span class="highlight">VMware vDefend & Seguridad Self-Service:</span> Delegación segura de políticas de firewall a inquilinos bajo modelos Zero-Trust.</li>
-            <li><span class="highlight">VMware Data Services Manager (DSM):</span> Gestión nativa de bases de datos como servicio (DBaaS), incluyendo Microsoft SQL Server automatizado.</li>
-            <li><span class="highlight">Optimización EVPN (v9.1.1):</span> Mejora radical en el rendimiento del tráfico Este-Oeste entre pasarelas de tránsito y la red física.</li>
+            <li><span class="highlight">Capacidad de vSAN Ampliada (1 TiB por núcleo):</span> Proporciona una asignación cuatro veces mayor de almacenamiento hiperconvergente de alto rendimiento respecto a VVF (0.25 TiB).</li>
+            <li><span class="highlight">Virtualización de Redes con NSX y EVPN Avanzado:</span> Integración nativa de la pila completa de redes virtuales, microsegmentación y pasarelas de tránsito (*Transit Gateways*) con optimización del plano de datos para tráfico Este-Oeste.</li>
+            <li><span class="highlight">VMware Data Services Manager (DSM):</span> Entrega aprovisionamiento automatizado de Bases de Datos como Servicio (DBaaS) para plataformas empresariales como Microsoft SQL Server.</li>
+            <li><span class="highlight">VMware vDefend & Seguridad Self-Service:</span> Permite delegar reglas de cortafuegos y políticas de seguridad contextuales a los equipos de desarrollo bajo un estricto modelo de confianza cero (*Zero-Trust*).</li>
+            <li><span class="highlight">Automatización de Flotas y SDDC Manager:</span> Orquestación completa del ciclo de vida, despliegue automatizado multi-sitio y detección y corrección automática de desviaciones de configuración (*configuration drift*).</li>
         </ul>
     </div>
 
     <!-- Diapositiva 4 -->
     <div class="slide">
         <span class="slide-number">Diapositiva 4 de 5</span>
-        <h2>Cuadro Comparativo: VVF 9.1 vs. VCF 9.1</h2>
+        <h2>Cuadro Comparativo Técnico: VVF 9.1 vs. VCF 9.1</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Componente / Característica</th>
-                    <th>VVF 9.1</th>
-                    <th>VCF 9.1</th>
+                    <th>Dimensión Arquitectónica</th>
+                    <th>VMware vSphere Foundation (VVF) 9.1</th>
+                    <th>VMware Cloud Foundation (VCF) 9.1</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Enfoque Arquitectónico</strong></td>
-                    <td>Cómputo avanzado, HCI e infraestructura optimizada para contenedores.</td>
-                    <td>Plataforma de Nube Privada Full-Stack automatizada de extremo a extremo.</td>
+                    <td><strong>Propósito y Alcance</strong></td>
+                    <td>Plataforma avanzada de cargas de trabajo para optimización de cómputo, HCI y contenedores.</td>
+                    <td>Nube privada automatizada de extremo a extremo (*Full-Stack IaaS*).</td>
                 </tr>
                 <tr>
-                    <td><strong>Capacidad vSAN Incluida</strong></td>
-                    <td>0.25 TiB por núcleo.</td>
-                    <td><strong>1 TiB</strong> por núcleo.</td>
+                    <td><strong>Capacidad de Almacenamiento vSAN</strong></td>
+                    <td><span class="tech-pill">0.25 TiB por núcleo</span></td>
+                    <td><span class="tech-pill">1.0 TiB por núcleo</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Virtualización de Red (NSX)</strong></td>
-                    <td><span class="badge" style="background-color: #991b1b;">No Incluido</span> (Requiere add-on o redes tradicionales).</td>
-                    <td><span class="badge" style="background-color: #166534;">Incluido Nativo</span> (NSX + EVPN).</td>
+                    <td><strong>Pila de Redes y Seguridad NSX</strong></td>
+                    <td><span class="badge badge-red">No Incluido</span> (Requiere redes tradicionales o add-on).</td>
+                    <td><span class="badge badge-green">Incluido Nativo</span> (NSX + Pasarelas EVPN).</td>
                 </tr>
                 <tr>
-                    <td><strong>Automatización de Flotas (SDDC)</strong></td>
-                    <td>Limitado a gestión por clúster/vCenter individual.</td>
-                    <td><span class="badge" style="background-color: #166534;">Incluido</span> (SDDC Manager y Fleet Management).</td>
+                    <td><strong>Gestión y Automatización de Flotas</strong></td>
+                    <td>Limitado a gestión individual de vCenter y clústeres mediante vLCM.</td>
+                    <td><span class="badge badge-green">Incluido</span> (SDDC Manager, Fleet Management y VCF Automation).</td>
                 </tr>
                 <tr>
-                    <td><strong>Servicios de Datos y Seguridad Avanzada</strong></td>
-                    <td>Capacidades base de vSphere y VKS.</td>
-                    <td><span class="badge" style="background-color: #166534;">Incluido</span> (vDefend y Data Services Manager / DBaaS).</td>
+                    <td><strong>Servicios de Datos y DBaaS (DSM)</strong></td>
+                    <td>Funcionalidades base de infraestructura y VKS.</td>
+                    <td><span class="badge badge-green">Incluido</span> (Data Services Manager y vDefend).</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <!-- Diapositiva 5 -->
-    <div class
+    <div class="slide">
+        <span class="slide-number">Diapositiva 5 de 5</span>
+        <h2>Consideraciones de Despliegue, Migración y Rutas de Actualización</h2>
+        <ul>
+            <li><span class="highlight">Despliegue con VCF Installer / Management Services:</span> La versión 9.1 simplifica las nuevas instalaciones mediante un asistente unificado que despliega los servicios de gestión, el repositorio binario interno y las herramientas de orquestación de flota de forma simultánea.</li>
+            <li><span class="highlight">Función VCF Import:</span> Permite integrar infraestructura vSphere existente al ecosistema de gestión centralizada de VCF Operations y SDDC Manager sin necesidad de paradas de aplicación ni migraciones de datos complejas.</li>
+            <li><span class="highlight">Validación de Compatibilidad:</span> Es mandatorio auditar previamente la compatibilidad de hardware (controladoras NVMe, microarquitecturas de CPU y drivers de red) y verificar que las soluciones de respaldo de terceros soporten plenamente las nuevas APIs de vSAN y contenedores en la versión 9.1.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
